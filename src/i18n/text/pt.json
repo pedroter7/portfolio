@@ -1,0 +1,139 @@
+{
+    "tabsTitles": {
+        "home": "Olá!",
+        "about": "Sobre",
+        "skills": "Skills",
+        "projects": "Projetos",
+        "experience": "Experiência"
+    },
+    "homeCard": {
+        "helloText": "Olá, eu sou",
+        "nameText": "Pedro,",
+        "smallIntroText": "um Engenheiro de Software Jr. e estudante de Ciência da Computação, apaixonado por criar produtos de softwares confiáveis e de qualidade superior.",
+        "nextCardButtonText": "Sobre mim"
+    },
+    "aboutCard": {
+        "avatarAltText": "Foto de Pedro Tersetti Freidinger",
+        "profilePictureSubtitle": "Pedro Tersetti Freidinger",
+        "nextCardButtonText": "Skills",
+        "previousCardButtonText": "Boas Vindas",
+        "paragraphs": [
+            "Meu nome é Pedro Tersetti Freidinger, e eu sou uma pessoa apaixonada por aprender sobre, construir e arrumar coisas. Meu interesse por engenharia surgiu quando eu tinha cerca de 10 anos de idade enquanto lia livros sobre computadores e, um tempo depois, quando montava meu primeiro computador do zero. Durante o ano de 2018, quando entrei para o Bacharelado em Ciência & Tecnologia na Universidade Federal do ABC, que eu decidi que resolver problemas e construir coisas era o que eu queria fazer para o resto da vida. Desde então eu tenho focado minha graduação na área de Ciência da Computação.",
+            "Minha jornada na Engenharia de Software começou oficialmente em março de 2022, quando tive a oportunidade de fazer parte em um programa de estágio em um dos maiores birôs de crédito do Brasil. Desde então, eu estive ativamente fazendo parte em atividades de design, documentação, administração, ciclo de vida e desenvolvimento de software. De forma não-oficial, eu estou em contato com a área de software desde meados de 2020 e 2021, quando comecei a cursar disciplinas mais avançadas na universidade, como sistemas distribuídos e algoritmos. Antes de me aventurar profundamente na Engenharia de Software, eu trabalhei na área de Cybersegurança e também estive em um programa de estágio em Administração de Sistemas por cerca de 5 meses.",
+            "Além da paixão por engenharia e tecnologia, eu amo aprender idiomas, pedalar, viajar, ler e escrever. No que diz respeito à idiomas, meu idioma nativo é o português mas eu também falo inglês e um pouco de espanhol e húngaro. Fora do mundo da Engenharia de Software, sou bastante interessado em IA, Cloud e dados."
+        ],
+        "titleText": "About me"
+    },
+    "skillsCard": {
+        "nextCardButtonText": "Projetos",
+        "previousCardButtonText": "Sobre mim",
+        "titleText": "Habilidades",
+        "skills": {
+            "recentlyWorkedWithTechnologies": [
+                "ASP.NET",
+                ".NET core",
+                "C#",
+                "React",
+                "Typescript",
+                "JavaScript",
+                "Google Cloud Plataform",
+                "Messaging",
+                "Kubernetes",
+                "Docker",
+                "Python",
+                "BigQuery",
+                "SQL Server",
+                "Linux",
+                "Windows Server",
+                "Microserviços"
+            ],
+            "otherTechnologies": [
+                "Java",
+                "Java Spring",
+                "PowerShell",
+                "Bash",
+                "Apache Zookeper",
+                "API Gateways",
+                "C",
+                "C++"
+            ],
+            "learningTechnologies": [
+                "Canary",
+                "Terraform",
+                "Skala",
+                "Apache Spark",
+                "Go lang",
+                "Frameworks de IA de código aberto",
+                "UI/UX"
+            ]
+        },
+        "recentlyWorkedWithTechnologiesTitle": "Tecnologias com as quais trabalhei recentemente",
+        "otherTechnologiesTitle": "Outras tecnologias",
+        "learningTechnologiesTitle": "Tecnologias e habilidades para o futuro",
+        "skilsAndAbilitiesAbstractText": "Desde que comecei a mexer com computadores e ler livros de tecnologia quando eu era criança, eu comecei a desenvolver um forte autodidatismo, habilidade que me ajudou em aprender linguagens de programação e idiomas de uma forma efetiva e confiável. Ser autodidata também me ajudou a alavancar minhas habilidades de planejamento, organização, persistência e pensamento analítico, principalmente dado ao fato de que errar e aprender com os erros se tornou algo natural para mim com o tempo. Além disso, durante minhas experiências acadêmicas e profissionais, desenvolvi e melhorei alguns skills críticos como a documentação de software e sistemas, elaboração e apresentação de projetos, comunicação, liderança e trabalho em equipe. Abaixo há um resumo sobre as tecnologias com que trabalhei recentemente, outras tecnologias que conheço e um spoiler sobre tecnologias e habilidades que pretendo aprender ou aperfeiçoar no futuro próximo."
+    },
+    "projectsCard": {
+        "nextCardButtonText": "Experiência Profissional",
+        "previousCardButtonText": "Skills",
+        "titleText": "Alguns projetos em que trabalhei",
+        "projectsAbstractText": "Como a maioria dos meus projetos ou projetos em que trabalhei são informação confidencial nas companhias para as quais trabalhei, eu tento resumir nessa página com o máximo de informação possível para mostrar ao mundo as experiências que tive. Apesar de eu não ter ainda nenhuma contribuição para projetos de Software de Código Aberto, sou um adepto dos OSSs.",
+        "projects": [
+            {
+                "title": "Migração de sistema legado para arquitetura de microserviços",
+                "descriptionParagraphs": [
+                    "Durante minha experiência profissional, trabalhei em colaboração com um time na migração de duas aplicações gigantes,  construídas no modelo de monolíto em .NET Framework, para uma arquitetura de microserviços utilizando versões atualizadas do .NET core, da linguagem C# e React com a linguagem TypeScript. Eu gosto de destacar dois desafios como os maiores desafios dessas migrações: i) o desafio de manter o sistema legado funcionando lado-a-lado e colaborativamente com as partes já migradas para a arquitetura de microserviços; ii) o desafio de aprender sobre a lógica e regras de negócio embutidas nas aplicações legadas, discutir e planejar com o time técnico e de negócio como melhorar essas regras para que os novos pequenos pedaços do software sejam melhores que o legado.",
+                    "Durante o projeto eu fiquei responsável principalmente pela parte de design, desenvolvimento e documentação do backend dos microserviços, porém também ajudei o time em algumas tarefas de fronted. Por conta disso, durante o desenvolvimento do projeto eu trabalhei com C#, SQL Server, TypeScript, React, BigQuery e testes unitários tanto no backend quanto no frontend.",
+                    "A migração dos sistemas legados para a arquitetura de microserviços era parte da jornada de transformação digital da empresa. Cada pequena parte do sistema legado que era migrada nos (o time) trouxe uma vasta quantidade de dados que nós posteriormente, durante reuniões ágeis e learning journals, transformamos em conhecimento, especialmente quando se tratava dos dois grandes desafios citados anteriormente."
+                ]
+            },
+            {
+                "title": "Esse portfólio",
+                "descriptionParagraphs": [
+                    "Eu construi esse portfólio para ser meu cartão de visitas em cerca de uma semana. Como design não é um dos meus fortes (e espero mudar isso no futuro), utilizei a biblioteca Material UI para fazer as coisas parecerem mais minimalistas, polidas e, até certo ponto, bonitas por aqui.",
+                    "O website é construído utilizando React como framework e TypeScript como linguagem de programação. O portfólio tem suporte multílingue e todo o código está disponível publicamente no GitHub."
+                ],
+                "url": "https://github.com/pedroter7/portfolio",
+                "urlLinkText": "Visite o projeto do portfólio no GitHub"
+            },
+            {
+                "title": "Reactive Floating Point Game",
+                "descriptionParagraphs": [
+                    "Construído em fevereiro de 2022, Reactive Floating Point Game, ou RFP - The Game, é um jogo de navegador simples no estilo Flappy Bird construído utilizando React. Eu decidi construir esse joguinho para colocar meus conhecimentos recém-adquiridos em React em prática.",
+                    "O jogo é bastente simples. No código a roda é reinventada em alguns aspectos e utiliza práticas \"antigas\" de React, como variáveis explícitas de estado e CSS puro. O código do jogo está publicamente disponível no GitHub e há um ambiente GitHub Pages onde é possível jogá-lo."
+                ],
+                "url": "https://github.com/pedroter7/reactive-floating-point-game",
+                "urlLinkText": "Visite o projeto do jogo no GitHub"
+            }
+        ]
+    },
+    "experienceCard": {
+        "previousCardButtonText": "Projetos",
+        "titleText": "Minha Experiência Profissional",
+        "experienceCardAbstractText": "Minha experiência profissional tem início oficialmente em novembro de 2020, quando eu comecei em um programa de estágio em Cybersegurança. Após Cybersegurança, passei pela área de Administração de Sistemas e então acabei na área de Engenharia de Software, onde eu sinto que finalmente me encontrei. Essa página trás alguns detalhes da minha vida profissional.",
+        "experiences": [
+            {
+                "field": "Engenharia de Software",
+                "detailsParagraphs": [
+                    "Eu comecei minha carreira em Engenharia de Software por volta de março de 2022, quando fui selecionado para um programa de estágio em um dos maiores birôs de crédito do Brasil, chamado Boa Vista Serviços. Desde o começo do estágio, estive trabalhando no time de Engenharia de Software de um dos produtos da companhia chamado de Bluebox. O Bluebox é uma plataforma do tipo SaaS onde as empresas podem aplicar inteligência nos dados da Boa Vista de uma forma on demand para enriquecimento de sua base de clientes, tomando assim decisões mais assertivas com relação a seus negócios.",
+                    "No time Bluebox eu trabalho como Estagiário de Engenharia de Software no backend, colaborando com o time durante planejamento, desenvolvimento, deploy e manutenção de microserviços e outros tipos de serviços, como background workers (ou simplesmente jobs), manutenção de sistemas legados, documentações e eventualmente ajudando os engenheiros de frontend. Além dessas tarefas, eu faço parte de reuniões estratégicas onde eu tento ao máximo ser o mais ativo e assertivo possível.",
+                    "Com relação à posição de Engenheiro de Software, no backend eu tenho experiência trabalhando com .NET (tanto framework como core) usando a linguagem C#, base de dados no SQL Server e serviços da GCP como o BigQuery. No frotend eu tenho experiência trabalhando com TypeSCript, JavaScript e o framework React. De forma geral, tenho experiência no deploy e manutenção de serviços na Google Cloud Plataform, planejamento e desenvolvimento para arquitetura de microserviços, planejamento e desenvolvimento de testes unitários tanto no backend quanto no frontend e vivência em um ambiente ágil e crescente."
+                ]
+            },
+            {
+                "field": "Outras Áreas",
+                "detailsParagraphs": [
+                    "Em novembro de 2020, eu comecei meu primeiro estágio em uma companhia chamada SEC4YOU Cybersecurity onde aprendi muito sobre segurança da informação, em especial sobre autorização/autenticação de acessos e administração de identidades. Após seis meses de estágio fui contratado pela mesma empresa para a posição de analista de TI/SI, posição que ocupei até setembro de 2021 quando decidi entrar para outro programa de estágio, dessa vez na área de Administração de Sistemas, na T-Systems do Brasil.",
+                    "Durante minha experiência em Cybersegurança, trabalhei com bancos de pequeno à médio porte e seus aplicativos móveis. Eu trabalhei diariamente com API Gateways, como o Layer 7 API Gateway da Broadcom, revisão e desenvolvimento de políticas de segurança e plataformas de MFA. Eu também tive experiências com desenvolvimento de aplicações móveis, administração de servidores Linux, desenvolvimento e deploy de web APIs e muitas documentações.",
+                    "De setembro de 2021 à fevereiro de 2022, eu fui estagiário de administração de sistemas na T-Systems do Brasil, onde eu auxiliava o time com a manutenção e deploy de infraestrutura de Electronic Data Interchange (EDI). Durante essa experiência eu tive muito contato com administração de servidores Windows e de cluster Kubernetes on-premises."
+                ]
+            }
+        ]
+    },
+    "footerTexts": {
+        "contactMeText": "Entre em contato:",
+        "sendMeMailText": "E-mail para:",
+        "linkedinLinkToolTipText": "Visite meu perfil no LinkedIn",
+        "githubLinkToolTipText": "Visite meu perfil no GitHub",
+        "languageText": "Idioma:"
+    }
+}
