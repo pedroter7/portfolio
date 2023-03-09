@@ -123,6 +123,15 @@ const Footer: React.FC<FooterProps> = ({
           </Button>
         </ButtonGroup>
       </Box>
+      <Box sx={boxReachMeStyle}>
+        <Link
+          href="https://www.flaticon.com/free-icons/man"
+          target="_blank"
+          title="man icons"
+        >
+          Man icons created by Smashicons - Flaticon
+        </Link>
+      </Box>
     </Box>
   );
 };
