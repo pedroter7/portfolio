@@ -2,6 +2,8 @@
 
 This is the code base for Pedro T Freidinger's personal website portfolio.
 
+Visit the website [here](https://pedroter7.github.io/portfolio/).
+
 ## Credits
 
 The man icon was created by [Smashicons at Flaticons](https://www.flaticon.com/free-icons/man).
