@@ -8,7 +8,7 @@
     },
     "homeCard": {
         "helloText": "Olá, eu sou",
-        "nameText": "Pedro,",
+        "nameText": "Pedro T Freidinger,",
         "smallIntroText": "um Engenheiro de Software Jr. e estudante de Ciência da Computação, apaixonado por criar produtos de software confiáveis e de qualidade superior.",
         "nextCardButtonText": "Sobre mim"
     },
@@ -19,8 +19,9 @@
         "previousCardButtonText": "Boas Vindas",
         "paragraphs": [
             "Meu nome é Pedro Tersetti Freidinger, e eu sou uma pessoa apaixonada por aprender sobre, construir e arrumar coisas. Meu interesse por engenharia surgiu quando eu tinha cerca de 10 anos de idade enquanto lia livros sobre computadores, e, um tempo depois, quando montava meu primeiro computador do zero.",
-            "Foi durante o ano de 2018, quando entrei para o Bacharelado em Ciência & Tecnologia na Universidade Federal do ABC, que decidi que resolver problemas e construir coisas é o que mais me motiva e, desde então, tenho focado minha graduação na área de Ciência da Computação.",
-            "Minha carreira em Engenharia de Software começou oficialmente em março de 2022, quando tive a oportunidade de iniciar em um programa de estágio em um dos maiores birôs de crédito do Brasil. Desde então, faço parte ativamente em atividades de design, documentação, administração, ciclo de vida e desenvolvimento de software. De forma não-oficial, eu estou em contato com a área de software desde meados de 2020/21, quando comecei a cursar disciplinas mais avançadas na universidade, como sistemas distribuídos e algoritmos. Antes de me aventurar profundamente na Engenharia de Software, eu trabalhei na área de Cybersegurança e também estive em um programa de estágio em Administração de Sistemas por cerca de 5 meses.",
+            "Durante o ano de 2018, quando entrei para o Bacharelado em Ciência & Tecnologia na Universidade Federal do ABC, decidi que resolver problemas e construir coisas é o que mais me motiva e, desde então, tenho focado minha graduação na área de Ciência da Computação.",
+            "Minha carreira em Engenharia de Software começou oficialmente em março de 2022, quando tive a oportunidade de iniciar em um programa de estágio em um dos maiores birôs de crédito do Brasil. Desde então, faço parte ativamente em atividades de design, documentação, administração, ciclo de vida e desenvolvimento de software.",
+            "De forma não-oficial, eu estou em contato com a área de software desde meados de 2020/21, quando comecei a cursar disciplinas mais avançadas na universidade, como sistemas distribuídos e algoritmos. Antes de me aventurar profundamente na Engenharia de Software, eu trabalhei na área de Cybersegurança e também estive em um programa de estágio em Administração de Sistemas por cerca de 5 meses.",
             "Fora do mundo da Engenharia de Software, tenho interesse em Inteligência Artificial, Computação em Nuvem, dados, aprender idiomas, pedalar, viajar, ler e escrever. No que diz respeito à idiomas, meu idioma nativo é o português mas eu também falo inglês e um pouco de espanhol e húngaro."
         ],
         "titleText": "About me"
@@ -85,7 +86,7 @@
                     "Durante minha experiência profissional, trabalhei em colaboração com um time na migração de duas aplicações, construídas no modelo de monolíto em .NET Framework, para uma arquitetura de microserviços utilizando versões atuais do .NET core, da linguagem C# e do framework React. Eu gosto de destacar dois desafios como os maiores desafios dessas migrações:",
                     "i) o desafio de manter o sistema legado funcionando lado-a-lado e colaborativamente com as partes já migradas para a arquitetura de microserviços;",
                     "ii) o desafio de aprender sobre a lógica e regras de negócio embutidas nas aplicações legadas, discutir e planejar com o time técnico e de negócio como melhorar essas regras para que os novos pequenos pedaços do software sejam melhores que o legado.",
-                    "Durante o projeto, fui responsável principalmente pela parte de design, desenvolvimento e documentação do backend dos microserviços, porém também ajudei o time em algumas tarefas de fronted. Durante o desenvolvimento do projeto eu trabalhei com C#, SQL Server, TypeScript, React, BigQuery e testes unitários tanto no backend quanto no frontend.",
+                    "Durante o projeto, fui responsável principalmente pela parte de design, desenvolvimento e documentação do backend dos microserviços, porém também ajudei o time em algumas tarefas de frontend. Durante o desenvolvimento do projeto eu trabalhei com C#, SQL Server, TypeScript, React, BigQuery e testes unitários tanto no backend quanto no frontend.",
                     "A migração dos sistemas legados para a arquitetura de microserviços era parte da jornada de transformação digital da empresa. Cada pequena parte do sistema legado que era migrada trouxe para o time uma vasta quantidade de dados que nós, durante reuniões ágeis e learning journals, transformamos em conhecimento, especialmente quando os dados estavam relacionados aos dois desafios citados anteriormente."
                 ]
             },
