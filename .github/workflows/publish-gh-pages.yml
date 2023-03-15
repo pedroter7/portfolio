@@ -1,0 +1,47 @@
+name: deploy-gh-pages
+
+on:
+  push:
+    branches:
+      - 'main'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+      - name: Setup Node.J senvironment
+        uses: actions/setup-node@v3.6.0
+      - name: Install yarn
+        run: npm i -g yarn
+      - name: Install dependecies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Compress build files
+        run: tar -cvf build.tar ./build
+      - name: Upload build.tar as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: react-build-artifact
+          path: ./build.tar
+          retention-days: 1
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: react-build-artifact
+      - name: Unpack build artifact
+        run: tar -xvf build.tar
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target-branch: gh-pages
+          build-dir: ./build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
