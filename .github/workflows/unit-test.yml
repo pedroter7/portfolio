@@ -22,6 +22,8 @@ jobs:
         run: npm i -g yarn
       - name: Install dependecies
         run: yarn install
+      - name: Cat the package.json file
+        run: cat package.json
       - name: Run unit tests and collect coverage
         run: yarn test-coverage
       - name: Code Coverage Summary
