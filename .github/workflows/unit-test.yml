@@ -41,7 +41,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: coverage-artifact
-          path: coverage/cobertura-coverage.xml
+          path: ./coverage
       - name: Generate coverage comment
         uses: ewjoachim/coverage-comment-action@v1.0.3
         with:
