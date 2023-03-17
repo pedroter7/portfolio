@@ -24,10 +24,11 @@ jobs:
         run: yarn install
       - name: Run unit tests and display coverage
         run: yarn test-coverage
-      - name: Generate coverage summary
-        uses: irongut/CodeCoverageSummary@v1.3.0
+      - name: Generate coverage comment
+        uses: kuju63/coverage-comment@v1.2.4
         with:
-          filename: ./coverage/cobertura-coverage.xml
-          badge: true
+          token: ${{ github.token }}
+          paths: coverage/cobertura-coverage.xml
+          type: 'cobertura'
 
         
