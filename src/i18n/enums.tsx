@@ -1,4 +1,5 @@
 export enum UILanguage {
     English,
-    Portuguese
+    Portuguese,
+    Default
 }
