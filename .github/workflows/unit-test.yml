@@ -25,10 +25,9 @@ jobs:
       - name: Run unit tests and display coverage
         run: yarn test-coverage
       - name: Generate coverage comment
-        uses: kuju63/coverage-comment@v1.2.4
+        uses: ewjoachim/coverage-comment-action@v1.0.3
         with:
-          token: ${{ github.token }}
-          paths: coverage/cobertura-coverage.xml
-          type: 'cobertura'
+          GITHUB_TOKEN: ${{ github.token }}
+          COVERAGE_FILE: "coverage/cobertura-coverage.xml"
 
         
