@@ -10,8 +10,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getConfigurationData, getFooterTexts } from "../../i18n/i18nUtil";
-import { I18nComponentProps } from "../../i18n/interfaces";
+import {
+  I18nComponentProps,
+  I18nConfigurationData,
+  I18nFooterTexts,
+} from "../../i18n/interfaces";
 import Linkedin from "@mui/icons-material/LinkedIn";
 import GitHub from "@mui/icons-material/GitHub";
 import Mail from "@mui/icons-material/Mail";
@@ -19,21 +22,27 @@ import { UILanguage } from "../../i18n/enums";
 
 interface FooterProps extends I18nComponentProps {
   onUiLanguageChange: (selectedLanguage: UILanguage) => void;
+  getFooterTextData: (language: UILanguage) => I18nFooterTexts;
+  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
 }
 
 const Footer: React.FC<FooterProps> = ({
   currentUILanguage,
   onUiLanguageChange,
+  getFooterTextData,
+  getConfigurationData,
 }) => {
-  const [textData, setTextData] = useState(getFooterTexts(currentUILanguage));
+  const [textData, setTextData] = useState(
+    getFooterTextData(currentUILanguage)
+  );
   const [configData, setConfigData] = useState(
     getConfigurationData(currentUILanguage)
   );
 
   useEffect(() => {
-    setTextData(getFooterTexts(currentUILanguage));
+    setTextData(getFooterTextData(currentUILanguage));
     setConfigData(getConfigurationData(currentUILanguage));
-  }, [currentUILanguage]);
+  }, [currentUILanguage, getFooterTextData, getConfigurationData]);
 
   const theme = useTheme();
   const screenIsSmallerThanMediumBreakpoint = useMediaQuery(
@@ -78,6 +87,7 @@ const Footer: React.FC<FooterProps> = ({
               onClick={() =>
                 onButtonLinkClick(configData.contactLinks.linkedin)
               }
+              data-testid="linkedin-contact-button"
             >
               <Linkedin />
             </IconButton>
@@ -85,6 +95,7 @@ const Footer: React.FC<FooterProps> = ({
           <Tooltip title={textData.githubLinkToolTipText} arrow>
             <IconButton
               onClick={() => onButtonLinkClick(configData.contactLinks.github)}
+              data-testid="github-contact-button"
             >
               <GitHub />
             </IconButton>
@@ -93,7 +104,10 @@ const Footer: React.FC<FooterProps> = ({
             <Tooltip
               title={`${textData.sendMeMailText} ${configData.contactLinks.email}`}
             >
-              <IconButton onClick={() => window.open(mailtoUrl, "_blank")}>
+              <IconButton
+                onClick={() => onButtonLinkClick(mailtoUrl)}
+                data-testid="email-contact-iconButton"
+              >
                 <Mail />
               </IconButton>
             </Tooltip>
@@ -102,7 +116,13 @@ const Footer: React.FC<FooterProps> = ({
         {!screenIsSmallerThanMediumBreakpoint && (
           <Typography variant="body1" id={`${idsPrefix}sendMeMailText`}>
             {textData.sendMeMailText}{" "}
-            <Link href={mailtoUrl}>{configData.contactLinks.email}</Link>
+            <Link
+              href={mailtoUrl}
+              target="_blank"
+              data-testid="email-contact-link"
+            >
+              {configData.contactLinks.email}
+            </Link>
           </Typography>
         )}
       </Box>
@@ -112,12 +132,14 @@ const Footer: React.FC<FooterProps> = ({
           <Button
             disabled={currentUILanguage === UILanguage.English}
             onClick={() => onButtonUiLanguageClick(UILanguage.English)}
+            data-testid="i18n-language-button-english"
           >
             EN
           </Button>
           <Button
             disabled={currentUILanguage === UILanguage.Portuguese}
             onClick={() => onButtonUiLanguageClick(UILanguage.Portuguese)}
+            data-testid="i18n-language-button-portuguese"
           >
             PT
           </Button>

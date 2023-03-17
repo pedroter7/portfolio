@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@mui/material";
+import { createTheme, responsiveFontSizes, ThemeOptions } from "@mui/material";
 
 const appThemeOptions: ThemeOptions = {
   palette: {
@@ -11,4 +11,7 @@ const appThemeOptions: ThemeOptions = {
   },
 };
 
-export { appThemeOptions };
+let appTheme = createTheme(appThemeOptions);
+appTheme = responsiveFontSizes(appTheme);
+
+export { appTheme };

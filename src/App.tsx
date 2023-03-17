@@ -9,13 +9,10 @@ import { PortfolioCardsTabEnum } from "./components/tabs/enums";
 import PortfolioCardTabPanel from "./components/tabs/PortfolioCardTabPanel";
 import PortfolioCardsTabs from "./components/tabs/PortfolioCardsTabs";
 import { UILanguage } from "./i18n/enums";
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import { appThemeOptions } from "./appStyle";
+import { appTheme } from "./appStyle";
+import { getConfigurationData, getFooterTexts } from "./i18n/i18nUtil";
 
 const App: React.FC<{}> = () => {
   const [currentCardTab, setCurrentCardTab] = useState(
@@ -27,18 +24,15 @@ const App: React.FC<{}> = () => {
 
   const isCardVisible = (cardIndex: number) => cardIndex === currentCardTab;
 
-  let theme = createTheme(appThemeOptions);
-  theme = responsiveFontSizes(theme);
-
   const appStyle = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    [theme.breakpoints.down("md")]: {
+    [appTheme.breakpoints.down("md")]: {
       padding: "1vmin 2vmin",
       gap: "1vmin",
     },
-    [theme.breakpoints.up("md")]: {
+    [appTheme.breakpoints.up("md")]: {
       padding: "1vmin 30vmin",
       gap: "2vmin",
     },
@@ -47,10 +41,10 @@ const App: React.FC<{}> = () => {
   const boxPortfolioCardsTabsStyle: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    [theme.breakpoints.up("md")]: {
+    [appTheme.breakpoints.up("md")]: {
       justifyContent: "center",
     },
-    [theme.breakpoints.down("md")]: {
+    [appTheme.breakpoints.down("md")]: {
       justifyContent: "stretch",
     },
   };
@@ -61,7 +55,7 @@ const App: React.FC<{}> = () => {
 
   return (
     <Box className="App" sx={appStyle}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={appTheme}>
         <Box sx={boxPortfolioCardsTabsStyle}>
           <PortfolioCardsTabs
             currentTab={currentCardTab}
@@ -125,6 +119,8 @@ const App: React.FC<{}> = () => {
           <Footer
             currentUILanguage={currentUILanguage}
             onUiLanguageChange={setCurrentUILanguage}
+            getConfigurationData={getConfigurationData}
+            getFooterTextData={getFooterTexts}
           />
         </Box>
       </ThemeProvider>
