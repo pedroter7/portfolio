@@ -27,7 +27,7 @@ jobs:
       - name: Generate coverage comment
         uses: ewjoachim/coverage-comment-action@v1.0.3
         with:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERAGE_FILE: "coverage/cobertura-coverage.xml"
 
         
