@@ -31,6 +31,7 @@ jobs:
           retention-days: 1
   generate-coverage-comment:
     runs-on: ubuntu-latest
+    needs: [run-unit-tests]
     continue-on-error: true
     permissions: write-all
     steps:
