@@ -1,5 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { I18nConfigurationData, I18nFooterTexts } from "./interfaces";
+import {
+  I18nCardsTabsTitles,
+  I18nConfigurationData,
+  I18nFooterTexts,
+} from "./interfaces";
 
 function createRandomI18nFooterTexts(): I18nFooterTexts {
   return {
@@ -22,4 +26,18 @@ function createRandomI18nConfigurationData(): I18nConfigurationData {
   };
 }
 
-export { createRandomI18nFooterTexts, createRandomI18nConfigurationData };
+function createRandomI18nCardsTabsTitles(): I18nCardsTabsTitles {
+  return {
+    about: faker.word.noun(),
+    experience: faker.word.noun(),
+    home: faker.word.noun(),
+    projects: faker.word.noun(),
+    skills: faker.word.noun(),
+  };
+}
+
+export {
+  createRandomI18nFooterTexts,
+  createRandomI18nConfigurationData,
+  createRandomI18nCardsTabsTitles,
+};
