@@ -6,27 +6,29 @@ import Assessment from "@mui/icons-material/Assessment";
 import AccountTree from "@mui/icons-material/AccountTree";
 import Science from "@mui/icons-material/Science";
 import { PortfolioCardsTabEnum } from "./enums";
-import { I18nComponentProps } from "../../i18n/interfaces";
-import { getTextForCardsTabsTitles } from "../../i18n/i18nUtil";
+import { I18nCardsTabsTitles, I18nComponentProps } from "../../i18n/interfaces";
 import { useEffect, useState } from "react";
+import { UILanguage } from "../../i18n/enums";
 
 interface PortfolioCardsTabsProps extends I18nComponentProps {
   currentTab: PortfolioCardsTabEnum;
   onTabChange: (newTab: PortfolioCardsTabEnum) => void;
+  getCardsTabsTitles: (language: UILanguage) => I18nCardsTabsTitles;
 }
 
 const PortfolioCardsTabs: React.FC<PortfolioCardsTabsProps> = ({
   currentTab,
   onTabChange,
   currentUILanguage,
+  getCardsTabsTitles
 }) => {
   const [tabsTexts, setTabsTexts] = useState(
-    getTextForCardsTabsTitles(currentUILanguage)
+    getCardsTabsTitles(currentUILanguage)
   );
 
   useEffect(
-    () => setTabsTexts(getTextForCardsTabsTitles(currentUILanguage)),
-    [currentUILanguage]
+    () => setTabsTexts(getCardsTabsTitles(currentUILanguage)),
+    [currentUILanguage, getCardsTabsTitles]
   );
 
   const handleChange = (
@@ -47,26 +49,31 @@ const PortfolioCardsTabs: React.FC<PortfolioCardsTabsProps> = ({
         icon={<EmojiPeople />}
         label={tabsTexts.home.toUpperCase()}
         value={PortfolioCardsTabEnum.Home}
+        data-testid="cardsTab-homeTab"
       />
       <Tab
         icon={<PersonPinIcon />}
         label={tabsTexts.about.toUpperCase()}
         value={PortfolioCardsTabEnum.About}
+        data-testid="cardsTab-aboutTab"
       />
       <Tab
         icon={<Assessment />}
         label={tabsTexts.skills.toUpperCase()}
         value={PortfolioCardsTabEnum.Skills}
+        data-testid="cardsTab-skillsTab"
       />
       <Tab
         icon={<AccountTree />}
         label={tabsTexts.projects.toUpperCase()}
         value={PortfolioCardsTabEnum.Projects}
+        data-testid="cardsTab-projectsTab"
       />
       <Tab
         icon={<Science />}
         label={tabsTexts.experience.toUpperCase()}
         value={PortfolioCardsTabEnum.Experience}
+        data-testid="cardsTab-experienceTab"
       />
     </Tabs>
   );
