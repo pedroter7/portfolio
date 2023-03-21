@@ -3,6 +3,7 @@ import {
   I18nCardsTabsTitles,
   I18nConfigurationData,
   I18nFooterTexts,
+  I18nHomeCardTexts,
 } from "./interfaces";
 
 function createRandomI18nFooterTexts(): I18nFooterTexts {
@@ -36,8 +37,21 @@ function createRandomI18nCardsTabsTitles(): I18nCardsTabsTitles {
   };
 }
 
+function createRandomI18nHomeCardTexts(): I18nHomeCardTexts {
+  return {
+    helloText: faker.lorem.sentence(),
+    nameText: faker.word.noun(),
+    nextCardButtonText: faker.word.noun(),
+    previousCardButtonText: faker.word.noun(),
+    smallIntroText: faker.lorem.sentences(
+      faker.datatype.number({ min: 3, max: 25 })
+    ),
+  };
+}
+
 export {
   createRandomI18nFooterTexts,
   createRandomI18nConfigurationData,
   createRandomI18nCardsTabsTitles,
+  createRandomI18nHomeCardTexts,
 };
