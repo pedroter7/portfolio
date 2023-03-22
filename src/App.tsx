@@ -12,7 +12,13 @@ import { UILanguage } from "./i18n/enums";
 import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { appTheme } from "./appStyle";
-import { getConfigurationData, getFooterTexts, getHomeCardTexts, getTextForCardsTabsTitles } from "./i18n/i18nUtil";
+import {
+  getAboutCardTexts,
+  getConfigurationData,
+  getFooterTexts,
+  getHomeCardTexts,
+  getTextForCardsTabsTitles,
+} from "./i18n/i18nUtil";
 
 const App: React.FC<{}> = () => {
   const [currentCardTab, setCurrentCardTab] = useState(
@@ -84,6 +90,8 @@ const App: React.FC<{}> = () => {
             <AboutCardContent
               currentUILanguage={currentUILanguage}
               onCardChange={setCurrentCardTab}
+              getAboutCardTexts={getAboutCardTexts}
+              getConfigurationData={getConfigurationData}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel
