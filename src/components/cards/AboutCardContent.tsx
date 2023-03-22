@@ -1,18 +1,27 @@
 import { Avatar, Box, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
-import { I18nComponentProps } from "../../i18n/interfaces";
+import {
+  I18nAboutCardTexts,
+  I18nComponentProps,
+  I18nConfigurationData,
+} from "../../i18n/interfaces";
 import { CommonCardContentProps } from "./intefaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
-import { getAboutCardTexts, getConfigurationData } from "../../i18n/i18nUtil";
 import CardNavigationButtons from "./common/CardNavigationButtons";
+import { UILanguage } from "../../i18n/enums";
 
 interface AboutCardContentPorps
   extends I18nComponentProps,
-    CommonCardContentProps {}
+    CommonCardContentProps {
+  getAboutCardTexts: (language: UILanguage) => I18nAboutCardTexts;
+  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
+}
 
 const AboutCardContent: React.FC<AboutCardContentPorps> = ({
   onCardChange,
   currentUILanguage,
+  getAboutCardTexts,
+  getConfigurationData,
 }) => {
   const [textData, setTextData] = useState(
     getAboutCardTexts(currentUILanguage)
@@ -25,7 +34,7 @@ const AboutCardContent: React.FC<AboutCardContentPorps> = ({
   useEffect(() => {
     setTextData(getAboutCardTexts(currentUILanguage));
     setConfigData(getConfigurationData(currentUILanguage));
-  }, [currentUILanguage]);
+  }, [currentUILanguage, getAboutCardTexts, getConfigurationData]);
 
   const theme = useTheme();
 
@@ -83,7 +92,7 @@ const AboutCardContent: React.FC<AboutCardContentPorps> = ({
       <Box sx={boxCardTitleStyle}>
         <Typography variant="h3">{textData.titleText}</Typography>
       </Box>
-      <Box sx={boxMainContentStyle}>
+      <Box sx={boxMainContentStyle} data-testid="box-maincontent">
         <Avatar
           alt={textData.avatarAltText}
           src={configData.profileAvatarUrl}

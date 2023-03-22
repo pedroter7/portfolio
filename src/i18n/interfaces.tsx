@@ -30,7 +30,6 @@ export interface I18nHomeCardTexts extends I18nCardsCommonTexts {
 
 export interface I18nAboutCardTexts extends I18nCardsCommonTexts {
   avatarAltText: string;
-  profilePictureSubtitle: string;
   paragraphs: string[];
   titleText: string;
 }

@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import {
+  I18nAboutCardTexts,
   I18nCardsTabsTitles,
   I18nConfigurationData,
   I18nFooterTexts,
@@ -23,7 +24,7 @@ function createRandomI18nConfigurationData(): I18nConfigurationData {
       github: faker.internet.url(),
       linkedin: faker.internet.url(),
     },
-    profileAvatarUrl: faker.internet.url(),
+    profileAvatarUrl: faker.internet.url() + faker.system.filePath(),
   };
 }
 
@@ -49,9 +50,23 @@ function createRandomI18nHomeCardTexts(): I18nHomeCardTexts {
   };
 }
 
+function createRandomI18nAboutCardTexts(): I18nAboutCardTexts {
+  return {
+    avatarAltText: faker.lorem.sentence(),
+    nextCardButtonText: faker.word.noun(),
+    paragraphs: faker.helpers.uniqueArray(
+      faker.lorem.sentence,
+      faker.datatype.number({ min: 1, max: 5 })
+    ),
+    previousCardButtonText: faker.word.noun(),
+    titleText: faker.lorem.sentence(),
+  };
+}
+
 export {
   createRandomI18nFooterTexts,
   createRandomI18nConfigurationData,
   createRandomI18nCardsTabsTitles,
   createRandomI18nHomeCardTexts,
+  createRandomI18nAboutCardTexts,
 };
