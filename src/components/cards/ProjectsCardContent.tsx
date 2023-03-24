@@ -35,7 +35,7 @@ const ProjectsCardContent: React.FC<ProjectsCardContentProps> = ({
 
   useEffect(
     () => setTextData(getProjectsCardTexts(currentUILanguage)),
-    [currentUILanguage]
+    [currentUILanguage, getProjectsCardTexts]
   );
 
   const theme = useTheme();
