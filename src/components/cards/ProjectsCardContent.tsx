@@ -8,20 +8,26 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getProjectsCardTexts } from "../../i18n/i18nUtil";
-import { I18nComponentProps } from "../../i18n/interfaces";
+import {
+  I18nComponentProps,
+  I18nProjectsCardTexts,
+} from "../../i18n/interfaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
 import CardNavigationButtons from "./common/CardNavigationButtons";
 import { CommonCardContentProps } from "./intefaces";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { UILanguage } from "../../i18n/enums";
 
 interface ProjectsCardContentProps
   extends I18nComponentProps,
-    CommonCardContentProps {}
+    CommonCardContentProps {
+  getProjectsCardTexts: (language: UILanguage) => I18nProjectsCardTexts;
+}
 
 const ProjectsCardContent: React.FC<ProjectsCardContentProps> = ({
   onCardChange,
   currentUILanguage,
+  getProjectsCardTexts,
 }) => {
   const [textData, setTextData] = useState(
     getProjectsCardTexts(currentUILanguage)
