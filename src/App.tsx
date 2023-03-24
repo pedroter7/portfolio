@@ -18,6 +18,7 @@ import {
   getExperienceCardTexts,
   getFooterTexts,
   getHomeCardTexts,
+  getProjectsCardTexts,
   getTextForCardsTabsTitles,
 } from "./i18n/i18nUtil";
 
@@ -113,6 +114,7 @@ const App: React.FC<{}> = () => {
             <ProjectsCardContent
               currentUILanguage={currentUILanguage}
               onCardChange={setCurrentCardTab}
+              getProjectsCardTexts={getProjectsCardTexts}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel

@@ -6,6 +6,7 @@ import {
   I18nExperienceCardTexts,
   I18nFooterTexts,
   I18nHomeCardTexts,
+  I18nProjectsCardTexts,
 } from "./interfaces";
 
 function createRandomI18nFooterTexts(): I18nFooterTexts {
@@ -56,7 +57,7 @@ function createRandomI18nAboutCardTexts(): I18nAboutCardTexts {
     avatarAltText: faker.lorem.sentence(),
     nextCardButtonText: faker.word.noun(),
     paragraphs: faker.helpers.uniqueArray(
-      faker.lorem.sentence,
+      faker.lorem.sentences,
       faker.datatype.number({ min: 1, max: 5 })
     ),
     previousCardButtonText: faker.word.noun(),
@@ -75,10 +76,37 @@ function createRandomI18nExperienceCardTexts(): I18nExperienceCardTexts {
       .map((t) => ({
         field: t,
         detailsParagraphs: faker.helpers.uniqueArray(
-          faker.lorem.sentence,
+          faker.lorem.sentences,
           faker.datatype.number({ min: 1, max: 5 })
         ),
       })),
+  };
+}
+
+function createRandomI18nProjectsCardTexts(): I18nProjectsCardTexts {
+  return {
+    nextCardButtonText: faker.word.noun(),
+    previousCardButtonText: faker.word.noun(),
+    projectsAbstractText: faker.lorem.sentences(),
+    titleText: faker.lorem.sentence(),
+    projects: faker.helpers
+      .uniqueArray(
+        faker.lorem.sentence,
+        faker.datatype.number({ min: 1, max: 10 })
+      )
+      .map((p) => {
+        const url = faker.datatype.boolean() ? faker.internet.url() : undefined;
+        const urlLinkText = url == null ? undefined : faker.lorem.sentence();
+        return {
+          descriptionParagraphs: faker.helpers.uniqueArray(
+            faker.lorem.sentences,
+            faker.datatype.number({ min: 1, max: 5 })
+          ),
+          title: p,
+          url,
+          urlLinkText,
+        };
+      }),
   };
 }
 
@@ -89,4 +117,5 @@ export {
   createRandomI18nHomeCardTexts,
   createRandomI18nAboutCardTexts,
   createRandomI18nExperienceCardTexts,
+  createRandomI18nProjectsCardTexts,
 };
