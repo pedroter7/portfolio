@@ -3,6 +3,7 @@ import {
   I18nAboutCardTexts,
   I18nCardsTabsTitles,
   I18nConfigurationData,
+  I18nExperienceCardTexts,
   I18nFooterTexts,
   I18nHomeCardTexts,
 } from "./interfaces";
@@ -63,10 +64,29 @@ function createRandomI18nAboutCardTexts(): I18nAboutCardTexts {
   };
 }
 
+function createRandomI18nExperienceCardTexts(): I18nExperienceCardTexts {
+  return {
+    experienceCardAbstractText: faker.lorem.sentences(),
+    nextCardButtonText: faker.word.noun(),
+    previousCardButtonText: faker.word.noun(),
+    titleText: faker.lorem.sentence(),
+    experiences: faker.helpers
+      .uniqueArray(faker.word.noun, faker.datatype.number({ min: 1, max: 3 }))
+      .map((t) => ({
+        field: t,
+        detailsParagraphs: faker.helpers.uniqueArray(
+          faker.lorem.sentence,
+          faker.datatype.number({ min: 1, max: 5 })
+        ),
+      })),
+  };
+}
+
 export {
   createRandomI18nFooterTexts,
   createRandomI18nConfigurationData,
   createRandomI18nCardsTabsTitles,
   createRandomI18nHomeCardTexts,
   createRandomI18nAboutCardTexts,
+  createRandomI18nExperienceCardTexts,
 };

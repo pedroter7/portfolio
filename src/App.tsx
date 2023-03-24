@@ -15,6 +15,7 @@ import { appTheme } from "./appStyle";
 import {
   getAboutCardTexts,
   getConfigurationData,
+  getExperienceCardTexts,
   getFooterTexts,
   getHomeCardTexts,
   getTextForCardsTabsTitles,
@@ -122,6 +123,7 @@ const App: React.FC<{}> = () => {
             <ExperienceCardContent
               currentUILanguage={currentUILanguage}
               onCardChange={setCurrentCardTab}
+              getExperienceCardTexts={getExperienceCardTexts}
             />
           </PortfolioCardTabPanel>
         </Box>
