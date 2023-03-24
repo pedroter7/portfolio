@@ -12,11 +12,6 @@ export interface I18nCardsTabsTitles {
   experience: string;
 }
 
-export interface I18nExperienceCardTabsTitles {
-  softwareEngineering: string;
-  otherFields: string;
-}
-
 interface I18nCardsCommonTexts {
   nextCardButtonText: string;
   previousCardButtonText: string;

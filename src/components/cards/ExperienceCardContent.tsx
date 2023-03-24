@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { I18nComponentProps } from "../../i18n/interfaces";
+import {
+  I18nComponentProps,
+  I18nExperienceCardTexts,
+} from "../../i18n/interfaces";
 import { CommonCardContentProps } from "./intefaces";
 import {
   Accordion,
@@ -9,18 +12,21 @@ import {
   useTheme,
 } from "@mui/material";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
-import { getExperienceCardTexts } from "../../i18n/i18nUtil";
 import { Box } from "@mui/system";
 import CardNavigationButtons from "./common/CardNavigationButtons";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { UILanguage } from "../../i18n/enums";
 
 interface ExperienceCardContentProps
   extends I18nComponentProps,
-    CommonCardContentProps {}
+    CommonCardContentProps {
+  getExperienceCardTexts: (language: UILanguage) => I18nExperienceCardTexts;
+}
 
 const ExperienceCardContent: React.FC<ExperienceCardContentProps> = ({
   onCardChange,
   currentUILanguage,
+  getExperienceCardTexts,
 }) => {
   const [textData, setTextData] = useState(
     getExperienceCardTexts(currentUILanguage)
@@ -28,7 +34,7 @@ const ExperienceCardContent: React.FC<ExperienceCardContentProps> = ({
 
   useEffect(
     () => setTextData(getExperienceCardTexts(currentUILanguage)),
-    [currentUILanguage]
+    [currentUILanguage, getExperienceCardTexts]
   );
 
   const theme = useTheme();
