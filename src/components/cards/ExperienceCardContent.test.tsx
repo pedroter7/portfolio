@@ -27,7 +27,9 @@ function assertTextsRenderedCorrectly(texts: I18nExperienceCardTexts) {
   expect(screen.getByText(texts.experienceCardAbstractText)).toBeVisible();
   texts.experiences.forEach((e) => {
     expect(screen.getByText(e.field)).toBeVisible();
-    expect(screen.getByText(e.detailsParagraphs[0])).toBeInTheDocument();
+    e.detailsParagraphs.forEach((d) =>
+      expect(screen.getByText(d)).toBeInTheDocument()
+    );
   });
 }
 
