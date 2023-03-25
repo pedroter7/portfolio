@@ -1,29 +1,19 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
 import { I18nComponentProps, I18nHomeCardTexts } from "../../i18n/interfaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
 import { CommonCardContentProps } from "./intefaces";
 import CardNavigationButtons from "./common/CardNavigationButtons";
-import { UILanguage } from "../../i18n/enums";
 
 interface HomeCardContentProps
   extends I18nComponentProps,
     CommonCardContentProps {
-  getHomeCardTexts: (language: UILanguage) => I18nHomeCardTexts;
+  textData: I18nHomeCardTexts;
 }
 
 const HomeCardContent: React.FC<HomeCardContentProps> = ({
   onCardChange,
-  currentUILanguage,
-  getHomeCardTexts
+  textData,
 }) => {
-  const [textData, setTextData] = useState(getHomeCardTexts(currentUILanguage));
-
-  useEffect(
-    () => setTextData(getHomeCardTexts(currentUILanguage)),
-    [currentUILanguage, getHomeCardTexts]
-  );
-
   const theme = useTheme();
 
   const idsPrefix = "homeCard-";

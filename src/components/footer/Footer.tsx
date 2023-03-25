@@ -9,7 +9,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import {
   I18nComponentProps,
   I18nConfigurationData,
@@ -22,28 +21,16 @@ import { UILanguage } from "../../i18n/enums";
 
 interface FooterProps extends I18nComponentProps {
   onUiLanguageChange: (selectedLanguage: UILanguage) => void;
-  getFooterTextData: (language: UILanguage) => I18nFooterTexts;
-  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
+  textData: I18nFooterTexts;
+  configData: I18nConfigurationData;
 }
 
 const Footer: React.FC<FooterProps> = ({
-  currentUILanguage,
   onUiLanguageChange,
-  getFooterTextData,
-  getConfigurationData,
+  configData,
+  textData,
+  currentUILanguage,
 }) => {
-  const [textData, setTextData] = useState(
-    getFooterTextData(currentUILanguage)
-  );
-  const [configData, setConfigData] = useState(
-    getConfigurationData(currentUILanguage)
-  );
-
-  useEffect(() => {
-    setTextData(getFooterTextData(currentUILanguage));
-    setConfigData(getConfigurationData(currentUILanguage));
-  }, [currentUILanguage, getFooterTextData, getConfigurationData]);
-
   const theme = useTheme();
   const screenIsSmallerThanMediumBreakpoint = useMediaQuery(
     theme.breakpoints.down("md")

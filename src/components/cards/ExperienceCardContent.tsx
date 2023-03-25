@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   I18nComponentProps,
   I18nExperienceCardTexts,
@@ -15,28 +14,17 @@ import { PortfolioCardsTabEnum } from "../tabs/enums";
 import { Box } from "@mui/system";
 import CardNavigationButtons from "./common/CardNavigationButtons";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { UILanguage } from "../../i18n/enums";
 
 interface ExperienceCardContentProps
   extends I18nComponentProps,
     CommonCardContentProps {
-  getExperienceCardTexts: (language: UILanguage) => I18nExperienceCardTexts;
+  textData: I18nExperienceCardTexts;
 }
 
 const ExperienceCardContent: React.FC<ExperienceCardContentProps> = ({
   onCardChange,
-  currentUILanguage,
-  getExperienceCardTexts,
+  textData,
 }) => {
-  const [textData, setTextData] = useState(
-    getExperienceCardTexts(currentUILanguage)
-  );
-
-  useEffect(
-    () => setTextData(getExperienceCardTexts(currentUILanguage)),
-    [currentUILanguage, getExperienceCardTexts]
-  );
-
   const theme = useTheme();
 
   const mainContainerStyle: React.CSSProperties = {

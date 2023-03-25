@@ -20,10 +20,10 @@ function createMocksForComponentProps() {
   const enTexts = createRandomI18nAboutCardTexts();
   const ptConfigData = createRandomI18nConfigurationData();
   const enConfigData = createRandomI18nConfigurationData();
-  const getAboutCardTextsMock = jest.fn((language: UILanguage) =>
+  const getAboutCardTexts = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enTexts : ptTexts
   );
-  const getConfigurationDataMock = jest.fn((language: UILanguage) =>
+  const getConfigurationData = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enConfigData : ptConfigData
   );
   const onCardChangeMock = jest.fn((newCard: PortfolioCardsTabEnum) => {});
@@ -32,8 +32,8 @@ function createMocksForComponentProps() {
     enTexts,
     ptConfigData,
     enConfigData,
-    getAboutCardTextsMock,
-    getConfigurationDataMock,
+    getAboutCardTexts,
+    getConfigurationData,
     onCardChangeMock,
   };
 }
@@ -63,11 +63,13 @@ describe("<AboutCardContent />", () => {
     it("When UI language is English", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.English;
+      const textData = mocks.getAboutCardTexts(language);
+      const configData = mocks.getConfigurationData(language);
       render(
         <AboutCardContent
           currentUILanguage={language}
-          getAboutCardTexts={mocks.getAboutCardTextsMock}
-          getConfigurationData={mocks.getConfigurationDataMock}
+          configData={configData}
+          textData={textData}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -82,11 +84,13 @@ describe("<AboutCardContent />", () => {
     it("When UI language is Portuguese", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.Portuguese;
+      const textData = mocks.getAboutCardTexts(language);
+      const configData = mocks.getConfigurationData(language);
       render(
         <AboutCardContent
           currentUILanguage={language}
-          getAboutCardTexts={mocks.getAboutCardTextsMock}
-          getConfigurationData={mocks.getConfigurationDataMock}
+          configData={configData}
+          textData={textData}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -103,17 +107,18 @@ describe("<AboutCardContent />", () => {
     it("When user clicks on next page button, the handler receives the correct enum value", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const texts = mocks.getAboutCardTextsMock(language);
+      const textData = mocks.getAboutCardTexts(language);
+      const configData = mocks.getConfigurationData(language);
       const user = userEvent.setup();
       render(
         <AboutCardContent
           currentUILanguage={language}
-          getAboutCardTexts={mocks.getAboutCardTextsMock}
-          getConfigurationData={mocks.getConfigurationDataMock}
+          configData={configData}
+          textData={textData}
           onCardChange={mocks.onCardChangeMock}
         />
       );
-      const nextButton = screen.getByText(texts.nextCardButtonText);
+      const nextButton = screen.getByText(textData.nextCardButtonText);
       await user.click(nextButton);
       expect(mocks.onCardChangeMock).toHaveBeenCalledTimes(1);
       expect(mocks.onCardChangeMock).toHaveBeenCalledWith(
@@ -124,17 +129,18 @@ describe("<AboutCardContent />", () => {
     it("When user clicks on previous page button, the handler receives the correct enum value", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const texts = mocks.getAboutCardTextsMock(language);
+      const textData = mocks.getAboutCardTexts(language);
+      const configData = mocks.getConfigurationData(language);
       const user = userEvent.setup();
       render(
         <AboutCardContent
           currentUILanguage={language}
-          getAboutCardTexts={mocks.getAboutCardTextsMock}
-          getConfigurationData={mocks.getConfigurationDataMock}
+          configData={configData}
+          textData={textData}
           onCardChange={mocks.onCardChangeMock}
         />
       );
-      const previousButton = screen.getByText(texts.previousCardButtonText);
+      const previousButton = screen.getByText(textData.previousCardButtonText);
       await user.click(previousButton);
       expect(mocks.onCardChangeMock).toHaveBeenCalledTimes(1);
       expect(mocks.onCardChangeMock).toHaveBeenCalledWith(

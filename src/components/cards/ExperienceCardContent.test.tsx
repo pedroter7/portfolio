@@ -11,12 +11,12 @@ function createMocksForComponentProps() {
   const onCardChangeMock = jest.fn((newCard: PortfolioCardsTabEnum) => {});
   const enTexts = createRandomI18nExperienceCardTexts();
   const ptTexts = createRandomI18nExperienceCardTexts();
-  const getExperienceCardTextsMock = jest.fn((language: UILanguage) =>
+  const getExperienceCardTexts = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enTexts : ptTexts
   );
   return {
     onCardChangeMock,
-    getExperienceCardTextsMock,
+    getExperienceCardTexts,
     ptTexts,
     enTexts,
   };
@@ -43,11 +43,11 @@ describe("<ExperienceCardContent />", () => {
     it("When UI language is English", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.English;
-      const texts = mocks.enTexts;
+      const texts = mocks.getExperienceCardTexts(language);
       render(
         <ExperienceCardContent
           currentUILanguage={language}
-          getExperienceCardTexts={mocks.getExperienceCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -58,11 +58,11 @@ describe("<ExperienceCardContent />", () => {
     it("When UI language is Portuguese", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.Portuguese;
-      const texts = mocks.ptTexts;
+      const texts = mocks.getExperienceCardTexts(language);
       render(
         <ExperienceCardContent
           currentUILanguage={language}
-          getExperienceCardTexts={mocks.getExperienceCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -75,12 +75,12 @@ describe("<ExperienceCardContent />", () => {
     it("When user clicks on previous card button, the correct enum is passed to the handler", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const texts = mocks.getExperienceCardTextsMock(language);
+      const texts = mocks.getExperienceCardTexts(language);
       const user = userEvent.setup();
       render(
         <ExperienceCardContent
           currentUILanguage={language}
-          getExperienceCardTexts={mocks.getExperienceCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );

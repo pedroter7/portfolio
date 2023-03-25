@@ -68,6 +68,7 @@ const getFooterTexts: (language: UILanguage) => I18nFooterTexts = (language) =>
   getAllTextData(language).footerTexts;
 
 export {
+  getAllTextData,
   getTextForCardsTabsTitles,
   getHomeCardTexts,
   getAboutCardTexts,

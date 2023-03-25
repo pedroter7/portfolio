@@ -10,13 +10,13 @@ import { createMocksForCommonCardContentProps } from "./intefaces.testFixture";
 function createMocksForComponentProps() {
   const ptTexts = createRandomI18nHomeCardTexts();
   const enTexts = createRandomI18nHomeCardTexts();
-  const getHomeCardTextsMock = jest.fn((language: UILanguage) =>
+  const getHomeCardTexts = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enTexts : ptTexts
   );
   return {
     ptTexts,
     enTexts,
-    getHomeCardTextsMock,
+    getHomeCardTexts,
     ...createMocksForCommonCardContentProps(),
   };
 }
@@ -27,10 +27,11 @@ describe("<HomeCardContent />", () => {
       const mocks = createMocksForComponentProps();
       const texts = mocks.enTexts;
       const language = UILanguage.English;
+      const textData = mocks.getHomeCardTexts(language);
       render(
         <HomeCardContent
           currentUILanguage={language}
-          getHomeCardTexts={mocks.getHomeCardTextsMock}
+          textData={textData}
           onCardChange={mocks.onCardChange}
         />
       );
@@ -47,10 +48,11 @@ describe("<HomeCardContent />", () => {
       const mocks = createMocksForComponentProps();
       const texts = mocks.ptTexts;
       const language = UILanguage.Portuguese;
+      const textData = mocks.getHomeCardTexts(language);
       render(
         <HomeCardContent
           currentUILanguage={language}
-          getHomeCardTexts={mocks.getHomeCardTextsMock}
+          textData={textData}
           onCardChange={mocks.onCardChange}
         />
       );
@@ -68,16 +70,16 @@ describe("<HomeCardContent />", () => {
     it("On click next card button passes correct parameter to handler function", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const text = mocks.getHomeCardTextsMock(language);
+      const textData = mocks.getHomeCardTexts(language);
       const user = userEvent.setup();
       render(
         <HomeCardContent
           currentUILanguage={language}
-          getHomeCardTexts={mocks.getHomeCardTextsMock}
+          textData={textData}
           onCardChange={mocks.onCardChange}
         />
       );
-      const nextCardButton = screen.getByText(text.nextCardButtonText);
+      const nextCardButton = screen.getByText(textData.nextCardButtonText);
       await user.click(nextCardButton);
       expect(mocks.onCardChange).toHaveBeenCalledTimes(1);
       expect(mocks.onCardChange).toHaveBeenCalledWith(PortfolioCardsTabEnum.About);

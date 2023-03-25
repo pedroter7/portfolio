@@ -7,30 +7,18 @@ import AccountTree from "@mui/icons-material/AccountTree";
 import Science from "@mui/icons-material/Science";
 import { PortfolioCardsTabEnum } from "./enums";
 import { I18nCardsTabsTitles, I18nComponentProps } from "../../i18n/interfaces";
-import { useEffect, useState } from "react";
-import { UILanguage } from "../../i18n/enums";
 
 interface PortfolioCardsTabsProps extends I18nComponentProps {
   currentTab: PortfolioCardsTabEnum;
   onTabChange: (newTab: PortfolioCardsTabEnum) => void;
-  getCardsTabsTitles: (language: UILanguage) => I18nCardsTabsTitles;
+  tabsTexts: I18nCardsTabsTitles;
 }
 
 const PortfolioCardsTabs: React.FC<PortfolioCardsTabsProps> = ({
   currentTab,
   onTabChange,
-  currentUILanguage,
-  getCardsTabsTitles
+  tabsTexts
 }) => {
-  const [tabsTexts, setTabsTexts] = useState(
-    getCardsTabsTitles(currentUILanguage)
-  );
-
-  useEffect(
-    () => setTabsTexts(getCardsTabsTitles(currentUILanguage)),
-    [currentUILanguage, getCardsTabsTitles]
-  );
-
   const handleChange = (
     event: React.SyntheticEvent,
     newValue: PortfolioCardsTabEnum
