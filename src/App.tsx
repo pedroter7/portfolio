@@ -13,23 +13,28 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { appTheme } from "./appStyle";
 import {
-  getAboutCardTexts,
-  getConfigurationData,
-  getExperienceCardTexts,
-  getFooterTexts,
-  getHomeCardTexts,
-  getProjectsCardTexts,
-  getSkillsCardTexts,
-  getTextForCardsTabsTitles,
-} from "./i18n/i18nUtil";
+  I18nComponentProps,
+  I18nConfigurationData,
+  I18nTextData,
+} from "./i18n/interfaces";
 
-const App: React.FC<{}> = () => {
+interface AppProps extends I18nComponentProps {
+  getTextData: (language: UILanguage) => I18nTextData;
+  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
+}
+
+const App: React.FC<AppProps> = ({
+  currentUILanguage,
+  getTextData,
+  getConfigurationData,
+}) => {
   const [currentCardTab, setCurrentCardTab] = useState(
     PortfolioCardsTabEnum.Home
   );
-  const [currentUILanguage, setCurrentUILanguage] = useState(
-    UILanguage.English
-  );
+
+  const [uILanguage, setUILanguage] = useState(currentUILanguage);
+  const textData = getTextData(uILanguage);
+  const configData = getConfigurationData(uILanguage);
 
   const isCardVisible = (cardIndex: number) => cardIndex === currentCardTab;
 
@@ -69,74 +74,74 @@ const App: React.FC<{}> = () => {
           <PortfolioCardsTabs
             currentTab={currentCardTab}
             onTabChange={setCurrentCardTab}
-            currentUILanguage={currentUILanguage}
-            getCardsTabsTitles={getTextForCardsTabsTitles}
+            currentUILanguage={uILanguage}
+            tabsTexts={textData.tabsTitles}
           />
         </Box>
         <Box sx={boxMainContentStyle}>
           <PortfolioCardTabPanel
-            currentUILanguage={currentUILanguage}
+            currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Home}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Home)}
           >
             <HomeCardContent
-              currentUILanguage={currentUILanguage}
+              currentUILanguage={uILanguage}
               onCardChange={setCurrentCardTab}
-              getHomeCardTexts={getHomeCardTexts}
+              textData={textData.homeCard}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel
-            currentUILanguage={currentUILanguage}
+            currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.About}
             isVisible={isCardVisible(PortfolioCardsTabEnum.About)}
           >
             <AboutCardContent
-              currentUILanguage={currentUILanguage}
+              currentUILanguage={uILanguage}
               onCardChange={setCurrentCardTab}
-              getAboutCardTexts={getAboutCardTexts}
-              getConfigurationData={getConfigurationData}
+              configData={configData}
+              textData={textData.aboutCard}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel
-            currentUILanguage={currentUILanguage}
+            currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Skills}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Skills)}
           >
             <SkillsCardContent
-              currentUILanguage={currentUILanguage}
+              currentUILanguage={uILanguage}
               onCardChange={setCurrentCardTab}
-              getSkillsCardTexts={getSkillsCardTexts}
+              textData={textData.skillsCard}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel
-            currentUILanguage={currentUILanguage}
+            currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Projects}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Projects)}
           >
             <ProjectsCardContent
-              currentUILanguage={currentUILanguage}
+              currentUILanguage={uILanguage}
               onCardChange={setCurrentCardTab}
-              getProjectsCardTexts={getProjectsCardTexts}
+              textData={textData.projectsCard}
             />
           </PortfolioCardTabPanel>
           <PortfolioCardTabPanel
-            currentUILanguage={currentUILanguage}
+            currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Experience}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Experience)}
           >
             <ExperienceCardContent
-              currentUILanguage={currentUILanguage}
+              currentUILanguage={uILanguage}
               onCardChange={setCurrentCardTab}
-              getExperienceCardTexts={getExperienceCardTexts}
+              textData={textData.experienceCard}
             />
           </PortfolioCardTabPanel>
         </Box>
         <Box>
           <Footer
-            currentUILanguage={currentUILanguage}
-            onUiLanguageChange={setCurrentUILanguage}
-            getConfigurationData={getConfigurationData}
-            getFooterTextData={getFooterTexts}
+            currentUILanguage={uILanguage}
+            onUiLanguageChange={setUILanguage}
+            configData={configData}
+            textData={textData.footerTexts}
           />
         </Box>
       </ThemeProvider>

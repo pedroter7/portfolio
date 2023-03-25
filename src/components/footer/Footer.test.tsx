@@ -22,10 +22,10 @@ function createMocksForComponentProps() {
   const ptTextData = createRandomI18nFooterTexts();
   const enConfigData = createRandomI18nConfigurationData();
   const ptConfigData = createRandomI18nConfigurationData();
-  const getFooterTextDataMock = jest.fn((language: UILanguage) =>
+  const getFooterTextData = jest.fn((language: UILanguage) =>
     language === UILanguage.English ? enTextData : ptTextData
   );
-  const getConfigurationDataMock = jest.fn((language: UILanguage) =>
+  const getConfigurationData = jest.fn((language: UILanguage) =>
     language === UILanguage.English ? enConfigData : ptConfigData
   );
   const onUiLanguageChangeMock = jest.fn((selectedLanguage: UILanguage) => {});
@@ -34,8 +34,8 @@ function createMocksForComponentProps() {
     ptTextData,
     enConfigData,
     ptConfigData,
-    getFooterTextDataMock,
-    getConfigurationDataMock,
+    getFooterTextData,
+    getConfigurationData,
     onUiLanguageChangeMock,
   };
 }
@@ -67,11 +67,14 @@ describe("<Footer />", () => {
   describe("I18n buttons", () => {
     it("All language buttons are rendered correctly", () => {
       const mocks = createMocksForComponentProps();
+      const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+      const configData = mocks.getConfigurationData(language);
+      const textData = mocks.getFooterTextData(language);
       render(
         <Footer
-          currentUILanguage={getRandomNonHeterogeneousEnumValue(UILanguage)}
-          getConfigurationData={mocks.getConfigurationDataMock}
-          getFooterTextData={mocks.getFooterTextDataMock}
+          currentUILanguage={language}
+          configData={configData}
+          textData={textData}
           onUiLanguageChange={mocks.onUiLanguageChangeMock}
         />
       );
@@ -84,12 +87,14 @@ describe("<Footer />", () => {
     it("Clicking PT language button calls the handler with correct language enum", async () => {
       const mocks = createMocksForComponentProps();
       const initialLanguage = UILanguage.English;
+      const configData = mocks.getConfigurationData(initialLanguage);
+      const textData = mocks.getFooterTextData(initialLanguage);
       const user = userEvent.setup();
       render(
         <Footer
           currentUILanguage={initialLanguage}
-          getConfigurationData={mocks.getConfigurationDataMock}
-          getFooterTextData={mocks.getFooterTextDataMock}
+          configData={configData}
+          textData={textData}
           onUiLanguageChange={mocks.onUiLanguageChangeMock}
         />
       );
@@ -104,12 +109,14 @@ describe("<Footer />", () => {
     it("Clicking EN language button calls the handler with correct language enum", async () => {
       const mocks = createMocksForComponentProps();
       const initialLanguage = UILanguage.Portuguese;
+      const configData = mocks.getConfigurationData(initialLanguage);
+      const textData = mocks.getFooterTextData(initialLanguage);
       const user = userEvent.setup();
       render(
         <Footer
           currentUILanguage={initialLanguage}
-          getConfigurationData={mocks.getConfigurationDataMock}
-          getFooterTextData={mocks.getFooterTextDataMock}
+          configData={configData}
+          textData={textData}
           onUiLanguageChange={mocks.onUiLanguageChangeMock}
         />
       );
@@ -126,11 +133,14 @@ describe("<Footer />", () => {
     describe("LinkedIn", () => {
       it("Renders correctly", () => {
         const mocks = createMocksForComponentProps();
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         render(
           <Footer
-            currentUILanguage={getRandomNonHeterogeneousEnumValue(UILanguage)}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -140,13 +150,15 @@ describe("<Footer />", () => {
 
       it("On click the correct url is open in a _blank target", async () => {
         const mocks = createMocksForComponentProps();
-        const languageEnum = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         const user = userEvent.setup();
         render(
           <Footer
-            currentUILanguage={languageEnum}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -154,7 +166,7 @@ describe("<Footer />", () => {
         await user.click(linkedinButton);
         expect(windowOpenSpy).toHaveBeenCalledTimes(1);
         expect(windowOpenSpy).toHaveBeenCalledWith(
-          mocks.getConfigurationDataMock(languageEnum).contactLinks.linkedin,
+          configData.contactLinks.linkedin,
           "_blank"
         );
       });
@@ -163,11 +175,14 @@ describe("<Footer />", () => {
     describe("GitHub", () => {
       it("Renders correctly", () => {
         const mocks = createMocksForComponentProps();
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         render(
           <Footer
-            currentUILanguage={getRandomNonHeterogeneousEnumValue(UILanguage)}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -177,13 +192,15 @@ describe("<Footer />", () => {
 
       it("On click the correct url is open in a _blank target", async () => {
         const mocks = createMocksForComponentProps();
-        const languageEnum = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         const user = userEvent.setup();
         render(
           <Footer
-            currentUILanguage={languageEnum}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -191,7 +208,7 @@ describe("<Footer />", () => {
         await user.click(githubButton);
         expect(windowOpenSpy).toHaveBeenCalledTimes(1);
         expect(windowOpenSpy).toHaveBeenCalledWith(
-          mocks.getConfigurationDataMock(languageEnum).contactLinks.github,
+          configData.contactLinks.github,
           "_blank"
         );
       });
@@ -201,11 +218,14 @@ describe("<Footer />", () => {
       it("Renders Link correctly on big screen, shouldn't render icon", () => {
         const mocks = createMocksForComponentProps();
         window.matchMedia = createMatchMedia(3000);
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         render(
           <Footer
-            currentUILanguage={getRandomNonHeterogeneousEnumValue(UILanguage)}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -219,11 +239,14 @@ describe("<Footer />", () => {
       it("Renders icon button correctly on small screen, shouldn't render link", () => {
         const mocks = createMocksForComponentProps();
         window.matchMedia = createMatchMedia(100);
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         render(
           <Footer
-            currentUILanguage={getRandomNonHeterogeneousEnumValue(UILanguage)}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -234,13 +257,15 @@ describe("<Footer />", () => {
 
       it("On click icon button the correct url is open in a _blank target", async () => {
         const mocks = createMocksForComponentProps();
-        const languageEnum = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+        const configData = mocks.getConfigurationData(language);
+        const textData = mocks.getFooterTextData(language);
         const user = userEvent.setup();
         render(
           <Footer
-            currentUILanguage={languageEnum}
-            getConfigurationData={mocks.getConfigurationDataMock}
-            getFooterTextData={mocks.getFooterTextDataMock}
+            currentUILanguage={language}
+            configData={configData}
+            textData={textData}
             onUiLanguageChange={mocks.onUiLanguageChangeMock}
           />
         );
@@ -248,10 +273,10 @@ describe("<Footer />", () => {
         await user.click(emailIconButton);
         expect(windowOpenSpy).toHaveBeenCalledTimes(1);
         expect(windowOpenSpy).toHaveBeenCalledWith(
-          `mailto: ${mocks.getConfigurationDataMock(languageEnum).contactLinks.email}`,
+          `mailto: ${configData.contactLinks.email}`,
           "_blank"
         );
-      })
+      });
     });
   });
 });

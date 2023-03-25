@@ -7,34 +7,22 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import { I18nComponentProps, I18nSkillsCardTexts } from "../../i18n/interfaces";
 import { CommonCardContentProps } from "./intefaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
 import CardNavigationButtons from "./common/CardNavigationButtons";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { UILanguage } from "../../i18n/enums";
 
 interface SkillsCardContentPorps
   extends I18nComponentProps,
     CommonCardContentProps {
-  getSkillsCardTexts: (language: UILanguage) => I18nSkillsCardTexts;
+  textData: I18nSkillsCardTexts;
 }
 
 const SkillsCardContent: React.FC<SkillsCardContentPorps> = ({
   onCardChange,
-  currentUILanguage,
-  getSkillsCardTexts,
+  textData,
 }) => {
-  const [textData, setTextData] = useState(
-    getSkillsCardTexts(currentUILanguage)
-  );
-
-  useEffect(
-    () => setTextData(getSkillsCardTexts(currentUILanguage)),
-    [currentUILanguage, getSkillsCardTexts]
-  );
-
   const theme = useTheme();
 
   const mainContainerStyle: React.CSSProperties = {

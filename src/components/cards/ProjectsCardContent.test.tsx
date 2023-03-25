@@ -11,14 +11,14 @@ function createMocksForComponentProps() {
   const ptTexts = createRandomI18nProjectsCardTexts();
   const enTexts = createRandomI18nProjectsCardTexts();
   const onCardChangeMock = jest.fn((newCard: PortfolioCardsTabEnum) => {});
-  const getProjectsCardTextsMock = jest.fn((language: UILanguage) =>
+  const getProjectsCardTexts = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enTexts : ptTexts
   );
   return {
     ptTexts,
     enTexts,
     onCardChangeMock,
-    getProjectsCardTextsMock,
+    getProjectsCardTexts,
   };
 }
 
@@ -48,11 +48,11 @@ describe("<ProjectsCardContent />", () => {
     it("When UI language is English", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.English;
-      const texts = mocks.enTexts;
+      const texts = mocks.getProjectsCardTexts(language);
       render(
         <ProjectsCardContent
           currentUILanguage={language}
-          getProjectsCardTexts={mocks.getProjectsCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -63,11 +63,11 @@ describe("<ProjectsCardContent />", () => {
     it("When UI language is Portuguese", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.Portuguese;
-      const texts = mocks.ptTexts;
+      const texts = mocks.getProjectsCardTexts(language);
       render(
         <ProjectsCardContent
           currentUILanguage={language}
-          getProjectsCardTexts={mocks.getProjectsCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -80,12 +80,12 @@ describe("<ProjectsCardContent />", () => {
     it("When user clicks next card button, the correct enum is passed to handler", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const texts = mocks.getProjectsCardTextsMock(language);
+      const texts = mocks.getProjectsCardTexts(language);
       const user = userEvent.setup();
       render(
         <ProjectsCardContent
           currentUILanguage={language}
-          getProjectsCardTexts={mocks.getProjectsCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );
@@ -100,12 +100,12 @@ describe("<ProjectsCardContent />", () => {
     it("When user clicks previous card button, the correct enum is passed to handler", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
-      const texts = mocks.getProjectsCardTextsMock(language);
+      const texts = mocks.getProjectsCardTexts(language);
       const user = userEvent.setup();
       render(
         <ProjectsCardContent
           currentUILanguage={language}
-          getProjectsCardTexts={mocks.getProjectsCardTextsMock}
+          textData={texts}
           onCardChange={mocks.onCardChangeMock}
         />
       );

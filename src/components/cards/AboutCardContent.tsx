@@ -1,5 +1,4 @@
 import { Avatar, Box, Typography, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
 import {
   I18nAboutCardTexts,
   I18nComponentProps,
@@ -8,34 +7,19 @@ import {
 import { CommonCardContentProps } from "./intefaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
 import CardNavigationButtons from "./common/CardNavigationButtons";
-import { UILanguage } from "../../i18n/enums";
 
 interface AboutCardContentPorps
   extends I18nComponentProps,
     CommonCardContentProps {
-  getAboutCardTexts: (language: UILanguage) => I18nAboutCardTexts;
-  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
+  textData: I18nAboutCardTexts;
+  configData: I18nConfigurationData;
 }
 
 const AboutCardContent: React.FC<AboutCardContentPorps> = ({
   onCardChange,
-  currentUILanguage,
-  getAboutCardTexts,
-  getConfigurationData,
+  configData,
+  textData
 }) => {
-  const [textData, setTextData] = useState(
-    getAboutCardTexts(currentUILanguage)
-  );
-
-  const [configData, setConfigData] = useState(
-    getConfigurationData(currentUILanguage)
-  );
-
-  useEffect(() => {
-    setTextData(getAboutCardTexts(currentUILanguage));
-    setConfigData(getConfigurationData(currentUILanguage));
-  }, [currentUILanguage, getAboutCardTexts, getConfigurationData]);
-
   const theme = useTheme();
 
   const mainContainerStyle: React.CSSProperties = {

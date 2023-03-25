@@ -38,14 +38,14 @@ function getTabEnumDifferentFrom(tabEnum: PortfolioCardsTabEnum) {
 function createMocksForComponentProps() {
   const enTabsTitle = createRandomI18nCardsTabsTitles();
   const ptTabsTitle = createRandomI18nCardsTabsTitles();
-  const getCardsTabsTitlesMock = jest.fn((language: UILanguage) =>
+  const getCardsTabsTitles = jest.fn((language: UILanguage) =>
     language == UILanguage.English ? enTabsTitle : ptTabsTitle
   );
   const onTabChangeMock = jest.fn((newTab: PortfolioCardsTabEnum) => {});
   return {
     enTabsTitle,
     ptTabsTitle,
-    getCardsTabsTitlesMock,
+    getCardsTabsTitles,
     onTabChangeMock,
   };
 }
@@ -64,6 +64,7 @@ describe("<PortfolioCardsTabs />", () => {
     it("When UI language is English", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.English;
+      const tabsTitles = mocks.getCardsTabsTitles(language);
       const currentTab = getRandomNonHeterogeneousEnumValue(
         PortfolioCardsTabEnum
       );
@@ -71,7 +72,7 @@ describe("<PortfolioCardsTabs />", () => {
         <PortfolioCardsTabs
           currentTab={currentTab}
           currentUILanguage={language}
-          getCardsTabsTitles={mocks.getCardsTabsTitlesMock}
+          tabsTexts={tabsTitles}
           onTabChange={mocks.onTabChangeMock}
         />
       );
@@ -95,6 +96,7 @@ describe("<PortfolioCardsTabs />", () => {
     it("When UI language is English", () => {
       const mocks = createMocksForComponentProps();
       const language = UILanguage.Portuguese;
+      const tabsTitles = mocks.getCardsTabsTitles(language);
       const currentTab = getRandomNonHeterogeneousEnumValue(
         PortfolioCardsTabEnum
       );
@@ -102,7 +104,7 @@ describe("<PortfolioCardsTabs />", () => {
         <PortfolioCardsTabs
           currentTab={currentTab}
           currentUILanguage={language}
-          getCardsTabsTitles={mocks.getCardsTabsTitlesMock}
+          tabsTexts={tabsTitles}
           onTabChange={mocks.onTabChangeMock}
         />
       );
@@ -128,6 +130,7 @@ describe("<PortfolioCardsTabs />", () => {
     it("The correct enum is passed to handler function", async () => {
       const mocks = createMocksForComponentProps();
       const language = getRandomNonHeterogeneousEnumValue(UILanguage);
+      const tabsTitles = mocks.getCardsTabsTitles(language);
       const currentTab = getRandomNonHeterogeneousEnumValue(
         PortfolioCardsTabEnum
       );
@@ -137,7 +140,7 @@ describe("<PortfolioCardsTabs />", () => {
         <PortfolioCardsTabs
           currentTab={currentTab}
           currentUILanguage={language}
-          getCardsTabsTitles={mocks.getCardsTabsTitlesMock}
+          tabsTexts={tabsTitles}
           onTabChange={mocks.onTabChangeMock}
         />
       );

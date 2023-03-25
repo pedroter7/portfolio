@@ -23,7 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --silent",
-    "test-coverage": "react-scripts test --watchAll=false --silent --coverage --coverageDirectory=./coverage --coverageReporters=\"json-summary\" --coverageReporters=\"cobertura\" --coverageReporters=\"text\" --coveragePathIgnorePatterns=\"/node_modules/\" --coveragePathIgnorePatterns=\"src/App.tsx\" --coveragePathIgnorePatterns=\"src/appStyle.ts\" --coveragePathIgnorePatterns=\"src/index.tsx\"",
+    "test-coverage": "react-scripts test --watchAll=false --silent --coverage --coverageDirectory=./coverage --coverageReporters=\"json-summary\" --coverageReporters=\"cobertura\" --coverageReporters=\"text\" --coveragePathIgnorePatterns=\"/node_modules/\" --coveragePathIgnorePatterns=\"src/appStyle.ts\" --coveragePathIgnorePatterns=\"src/index.tsx\"",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
