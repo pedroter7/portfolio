@@ -7,6 +7,7 @@ import {
   I18nFooterTexts,
   I18nHomeCardTexts,
   I18nProjectsCardTexts,
+  I18nSkillsCardTexts,
 } from "./interfaces";
 
 function createRandomI18nFooterTexts(): I18nFooterTexts {
@@ -110,6 +111,32 @@ function createRandomI18nProjectsCardTexts(): I18nProjectsCardTexts {
   };
 }
 
+function createRandomI18nSkillsCardTexts(): I18nSkillsCardTexts {
+  return {
+    nextCardButtonText: faker.word.noun(),
+    previousCardButtonText: faker.word.noun(),
+    learningTechnologiesTitle: faker.lorem.sentence(),
+    otherTechnologiesTitle: faker.lorem.sentence(),
+    skilsAndAbilitiesAbstractText: faker.lorem.sentences(),
+    titleText: faker.lorem.sentence(),
+    recentlyWorkedWithTechnologiesTitle: faker.lorem.sentence(),
+    skills: {
+      learningTechnologies: faker.helpers.uniqueArray(
+        faker.lorem.sentence,
+        faker.datatype.number({ min: 1, max: 20 })
+      ),
+      otherTechnologies: faker.helpers.uniqueArray(
+        faker.lorem.sentence,
+        faker.datatype.number({ min: 1, max: 20 })
+      ),
+      recentlyWorkedWithTechnologies: faker.helpers.uniqueArray(
+        faker.lorem.sentence,
+        faker.datatype.number({ min: 1, max: 20 })
+      ),
+    },
+  };
+}
+
 export {
   createRandomI18nFooterTexts,
   createRandomI18nConfigurationData,
@@ -118,4 +145,5 @@ export {
   createRandomI18nAboutCardTexts,
   createRandomI18nExperienceCardTexts,
   createRandomI18nProjectsCardTexts,
+  createRandomI18nSkillsCardTexts,
 };

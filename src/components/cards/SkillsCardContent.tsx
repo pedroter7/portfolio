@@ -8,20 +8,23 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { I18nComponentProps } from "../../i18n/interfaces";
+import { I18nComponentProps, I18nSkillsCardTexts } from "../../i18n/interfaces";
 import { CommonCardContentProps } from "./intefaces";
 import { PortfolioCardsTabEnum } from "../tabs/enums";
-import { getSkillsCardTexts } from "../../i18n/i18nUtil";
 import CardNavigationButtons from "./common/CardNavigationButtons";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { UILanguage } from "../../i18n/enums";
 
 interface SkillsCardContentPorps
   extends I18nComponentProps,
-    CommonCardContentProps {}
+    CommonCardContentProps {
+  getSkillsCardTexts: (language: UILanguage) => I18nSkillsCardTexts;
+}
 
 const SkillsCardContent: React.FC<SkillsCardContentPorps> = ({
   onCardChange,
   currentUILanguage,
+  getSkillsCardTexts,
 }) => {
   const [textData, setTextData] = useState(
     getSkillsCardTexts(currentUILanguage)
@@ -29,7 +32,7 @@ const SkillsCardContent: React.FC<SkillsCardContentPorps> = ({
 
   useEffect(
     () => setTextData(getSkillsCardTexts(currentUILanguage)),
-    [currentUILanguage]
+    [currentUILanguage, getSkillsCardTexts]
   );
 
   const theme = useTheme();
