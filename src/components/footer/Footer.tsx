@@ -30,6 +30,7 @@ const Footer: React.FC<FooterProps> = ({
   configData,
   textData,
   currentUILanguage,
+  ...other
 }) => {
   const theme = useTheme();
   const screenIsSmallerThanMediumBreakpoint = useMediaQuery(
@@ -61,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <Box sx={boxContainerStyle}>
+    <Box sx={boxContainerStyle} {...other}>
       <Box sx={boxReachMeStyle}>
         {!screenIsSmallerThanMediumBreakpoint && (
           <Typography variant="h6" id={`${idsPrefix}contactMeText`}>

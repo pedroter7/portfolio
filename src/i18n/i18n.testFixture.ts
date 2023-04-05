@@ -8,6 +8,7 @@ import {
   I18nHomeCardTexts,
   I18nProjectsCardTexts,
   I18nSkillsCardTexts,
+  I18nTextData,
 } from "./interfaces";
 
 function createRandomI18nFooterTexts(): I18nFooterTexts {
@@ -137,6 +138,18 @@ function createRandomI18nSkillsCardTexts(): I18nSkillsCardTexts {
   };
 }
 
+function createRandomI18nTextData(): I18nTextData {
+  return {
+    aboutCard: createRandomI18nAboutCardTexts(),
+    experienceCard: createRandomI18nExperienceCardTexts(),
+    footerTexts: createRandomI18nFooterTexts(),
+    homeCard: createRandomI18nHomeCardTexts(),
+    projectsCard: createRandomI18nProjectsCardTexts(),
+    skillsCard: createRandomI18nSkillsCardTexts(),
+    tabsTitles: createRandomI18nCardsTabsTitles(),
+  };
+}
+
 export {
   createRandomI18nFooterTexts,
   createRandomI18nConfigurationData,
@@ -146,4 +159,5 @@ export {
   createRandomI18nExperienceCardTexts,
   createRandomI18nProjectsCardTexts,
   createRandomI18nSkillsCardTexts,
+  createRandomI18nTextData,
 };

@@ -11,12 +11,14 @@ const PortfolioCardTabPanel: React.FC<PortfolioCardTabPanelProps> = ({
   index,
   isVisible,
   children,
+  ...other
 }) => {
   return (
     <div
       role="tabpanel"
       hidden={!isVisible}
       id={`portfolio-card-${index}`}
+      {...other}
     >
       {children}
     </div>
