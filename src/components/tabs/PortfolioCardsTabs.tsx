@@ -17,7 +17,8 @@ interface PortfolioCardsTabsProps extends I18nComponentProps {
 const PortfolioCardsTabs: React.FC<PortfolioCardsTabsProps> = ({
   currentTab,
   onTabChange,
-  tabsTexts
+  tabsTexts,
+  ...other
 }) => {
   const handleChange = (
     event: React.SyntheticEvent,
@@ -32,6 +33,7 @@ const PortfolioCardsTabs: React.FC<PortfolioCardsTabsProps> = ({
       onChange={handleChange}
       variant="scrollable"
       scrollButtons="auto"
+      {...other}
     >
       <Tab
         icon={<EmojiPeople />}

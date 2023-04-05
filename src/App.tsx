@@ -21,16 +21,17 @@ import {
 interface AppProps extends I18nComponentProps {
   getTextData: (language: UILanguage) => I18nTextData;
   getConfigurationData: (language: UILanguage) => I18nConfigurationData;
+  initialTab: PortfolioCardsTabEnum;
 }
 
 const App: React.FC<AppProps> = ({
   currentUILanguage,
   getTextData,
   getConfigurationData,
+  initialTab,
+  ...other
 }) => {
-  const [currentCardTab, setCurrentCardTab] = useState(
-    PortfolioCardsTabEnum.Home
-  );
+  const [currentCardTab, setCurrentCardTab] = useState(initialTab);
 
   const [uILanguage, setUILanguage] = useState(currentUILanguage);
   const textData = getTextData(uILanguage);
@@ -76,6 +77,7 @@ const App: React.FC<AppProps> = ({
             onTabChange={setCurrentCardTab}
             currentUILanguage={uILanguage}
             tabsTexts={textData.tabsTitles}
+            data-testid="portfolio-cards-tabs"
           />
         </Box>
         <Box sx={boxMainContentStyle}>
@@ -83,6 +85,7 @@ const App: React.FC<AppProps> = ({
             currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Home}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Home)}
+            data-testid="homecard-tabpanel"
           >
             <HomeCardContent
               currentUILanguage={uILanguage}
@@ -94,6 +97,7 @@ const App: React.FC<AppProps> = ({
             currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.About}
             isVisible={isCardVisible(PortfolioCardsTabEnum.About)}
+            data-testid="aboutcard-tabpanel"
           >
             <AboutCardContent
               currentUILanguage={uILanguage}
@@ -106,6 +110,7 @@ const App: React.FC<AppProps> = ({
             currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Skills}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Skills)}
+            data-testid="skillscard-tabpanel"
           >
             <SkillsCardContent
               currentUILanguage={uILanguage}
@@ -117,6 +122,7 @@ const App: React.FC<AppProps> = ({
             currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Projects}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Projects)}
+            data-testid="projectscard-tabpanel"
           >
             <ProjectsCardContent
               currentUILanguage={uILanguage}
@@ -128,6 +134,7 @@ const App: React.FC<AppProps> = ({
             currentUILanguage={uILanguage}
             index={PortfolioCardsTabEnum.Experience}
             isVisible={isCardVisible(PortfolioCardsTabEnum.Experience)}
+            data-testid="experiencecard-tabpanel"
           >
             <ExperienceCardContent
               currentUILanguage={uILanguage}
@@ -142,6 +149,7 @@ const App: React.FC<AppProps> = ({
             onUiLanguageChange={setUILanguage}
             configData={configData}
             textData={textData.footerTexts}
+            data-testid="footer"
           />
         </Box>
       </ThemeProvider>
