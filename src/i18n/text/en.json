@@ -7,9 +7,9 @@
         "experience": "Experience"
     },
     "homeCard": {
-        "helloText": "Hi, I am",
+        "helloText": "Hello there, I'm",
         "nameText": "Pedro T Freidinger,",
-        "smallIntroText": "an entry-level Software Engineer and Computer Science student passionated about building reliable, world-class software products, travelling and languages.",
+        "smallIntroText": "a software engineer with 1+ years of experience building reliable world-class software. I'm also passionate about languages, culture, travelling, mountain biking and much more. Please, make yourself at home :)",
         "nextCardButtonText": "About me"
     },
     "aboutCard": {
@@ -18,8 +18,8 @@
         "previousCardButtonText": "Welcome Message",
         "paragraphs": [
             "My name is Pedro Tersetti Freidinger and I am passionated about learning, building, fixing and making stuff work. My interest for engineering aroused back when I was about 10 years old by reading books about computers and then, a few time later, building my first computer from scratch.",
-            "It was during 2018, when I enrolled in the Bachelor of Science & Technology course at Federal Univerisity of ABC (Brazil), that I decided that solving problems and building things is what I want to do for a living. Since then I have been foccused on majoring Computer Science.",
-            "My journey in Software Engineering began oficially in March 2022, when I had the opportunity to take part in an internship program at one of the biggest bureaus of credit in Brazil. Since then I have been actively taking part in software design, documentation, management, lifecycle and, of course, development activities. Unofficially, I have been in touch with the Software Engineering field since somewhere between 2020 and 2021, when I started taking more advanced courses in college such as distributed systems and algorithms. Before diving deep in Software Engineering, I also worked in the Cybersecurity field and took part in an internship in Systems Management for about 5 months.",
+            "It was during 2018, when I enrolled in the Bachelor of Science & Technology course at Federal Univerisity of ABC (Brazil), that I decided that solving problems and building things is what I want to do for a living.",
+            "My journey in Software Engineering began oficially in March 2022, when I had the opportunity to take part in an internship program at one of the biggest bureaus of credit in Brazil. Since then I have been actively taking part in software design, documentation, management, lifecycle and, of course, development activities. Unofficially, I have been in touch with the Software Engineering field since somewhere between 2020 and 2021, when I started taking more advanced courses in college such as distributed systems and algorithms. Before diving deep in Software Engineering, I also worked in the Cybersecurity field for about 1 year, and took part in an internship in IT Infrastructure for about 5 months.",
             "Beyond the Software Engineering world I am interested in Artificial Intelligence, Cloud Computing, data, moutain biking, travelling, reading and writing. As a matter of languages, my mother tongue is Portuguese but I also speak English, a little of Spanish and Hungarian."
         ],
         "titleText": "About me"
