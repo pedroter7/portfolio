@@ -45,7 +45,8 @@
                 "SQL Server",
                 "Linux",
                 "Windows Server",
-                "Microservices"
+                "Microservices",
+                "Node.js"
             ],
             "otherTechnologies": [
                 "Java",
@@ -55,7 +56,9 @@
                 "Apache Zookeper",
                 "API Gateways",
                 "C",
-                "C++"
+                "C++",
+                "Android",
+                "Unity 2D"
             ],
             "learningTechnologies": [
                 "Canary",
@@ -64,7 +67,13 @@
                 "Apache Spark",
                 "Go lang",
                 "Open Source AI Frameworks",
-                "UI/UX"
+                "UI/UX",
+                "Angular",
+                "Ruby & Ruby on Rails",
+                ".NET MAUI",
+                "Kotlin",
+                "Functional Programming",
+                "React Native"
             ]
         },
         "recentlyWorkedWithTechnologiesTitle": "Technologies I have worked with recently",
