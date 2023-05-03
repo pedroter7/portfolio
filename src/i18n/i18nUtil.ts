@@ -26,17 +26,28 @@ const getAllTextData: (language: UILanguage) => I18nTextData = (language) => {
   }
 };
 
+const replacePlaceHolders: (data: I18nConfigurationData) => void = (
+  data
+) => {
+  data.profileAvatarUrl = data.profileAvatarUrl.replace("%PUBLIC_URL%", process.env.PUBLIC_URL);
+};
+
 const getConfigurationData: (language: UILanguage) => I18nConfigurationData = (
   language
 ) => {
+  var data: I18nConfigurationData;
   switch (language) {
     case UILanguage.English:
-      return englishConfigData as I18nConfigurationData;
+      data = englishConfigData as I18nConfigurationData;
+      break;
     case UILanguage.Portuguese:
-      return portugueseConfigData as I18nConfigurationData;
+      data = portugueseConfigData as I18nConfigurationData;
+      break;
     default:
-      return englishConfigData as I18nConfigurationData;
+      data= englishConfigData as I18nConfigurationData;
   }
+  replacePlaceHolders(data);
+  return data;
 };
 
 const getTextForCardsTabsTitles: (
