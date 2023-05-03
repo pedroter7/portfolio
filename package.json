@@ -1,7 +1,6 @@
 {
   "name": "pedroter7-portfolio",
   "version": "1.0.0",
-  "homepage": "https://pedroter7.github.io/portfolio",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
