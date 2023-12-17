@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Compress build files
-        run: tar -cvf build.tar ./build
+        run: tar -cvf build.tar ./dist
       - name: Upload build.tar as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -43,6 +43,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: gh-pages
-          build_dir: ./build
+          build_dir: ./dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
