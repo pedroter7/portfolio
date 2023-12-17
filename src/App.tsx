@@ -1,159 +1,65 @@
-import React, { useState } from "react";
-import AboutCardContent from "./components/cards/AboutCardContent";
-import ExperienceCardContent from "./components/cards/ExperienceCardContent";
-import HomeCardContent from "./components/cards/HomeCardContent";
-import ProjectsCardContent from "./components/cards/ProjectsCardContent";
-import SkillsCardContent from "./components/cards/SkillsCardContent";
-import Footer from "./components/footer/Footer";
-import { PortfolioCardsTabEnum } from "./components/tabs/enums";
-import PortfolioCardTabPanel from "./components/tabs/PortfolioCardTabPanel";
-import PortfolioCardsTabs from "./components/tabs/PortfolioCardsTabs";
-import { UILanguage } from "./i18n/enums";
-import { ThemeProvider } from "@mui/material/styles";
-import { Box } from "@mui/system";
-import { appTheme } from "./appStyle";
-import {
-  I18nComponentProps,
-  I18nConfigurationData,
-  I18nTextData,
-} from "./i18n/interfaces";
+import { useEffect } from "react";
+import "./App.css";
+import Typewriter from "react-ts-typewriter";
+import ContactSection from "./components/ContactSection";
 
-interface AppProps extends I18nComponentProps {
-  getTextData: (language: UILanguage) => I18nTextData;
-  getConfigurationData: (language: UILanguage) => I18nConfigurationData;
-  initialTab: PortfolioCardsTabEnum;
-}
+const getRandomNumber = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
-const App: React.FC<AppProps> = ({
-  currentUILanguage,
-  getTextData,
-  getConfigurationData,
-  initialTab,
-  ...other
-}) => {
-  const [currentCardTab, setCurrentCardTab] = useState(initialTab);
+const helloTexts = [
+  "Hello,",
+  "Szia,",
+  "Hallo,",
+  "Olá,",
+  "Привиет,",
+  "Hola,",
+  "Salut,",
+];
 
-  const [uILanguage, setUILanguage] = useState(currentUILanguage);
-  const textData = getTextData(uILanguage);
-  const configData = getConfigurationData(uILanguage);
+const App = () => {
+  const backgroundNumber = getRandomNumber(1, 3);
 
-  const isCardVisible = (cardIndex: number) => cardIndex === currentCardTab;
+  useEffect(() => {
+    const backgroundImage = `/background_${backgroundNumber}.jpg`;
+    const backgroundVideo = `/background_video_${backgroundNumber}.mp4`;
 
-  const appStyle = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    [appTheme.breakpoints.down("md")]: {
-      padding: "1vmin 2vmin",
-      gap: "1vmin",
-    },
-    [appTheme.breakpoints.up("md")]: {
-      padding: "1vmin 30vmin",
-      gap: "2vmin",
-    },
-  };
+    const video = document.getElementById(
+      "backgroundVideo"
+    ) as HTMLVideoElement;
+    video.addEventListener("ended", () => {
+      video.play();
+    });
 
-  const boxPortfolioCardsTabsStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    [appTheme.breakpoints.up("md")]: {
-      justifyContent: "center",
-    },
-    [appTheme.breakpoints.down("md")]: {
-      justifyContent: "stretch",
-    },
-  };
+    document.body.style.backgroundImage = `url(${backgroundImage})`;
+    video.src = backgroundVideo;
 
-  const boxMainContentStyle: React.CSSProperties = {
-    minHeight: "70vh",
-  };
+    return () => {
+      video.removeEventListener("ended", () => {
+        video.play();
+      });
+    };
+  }, [backgroundNumber]);
 
   return (
-    <Box className="App" sx={appStyle}>
-      <ThemeProvider theme={appTheme}>
-        <Box sx={boxPortfolioCardsTabsStyle}>
-          <PortfolioCardsTabs
-            currentTab={currentCardTab}
-            onTabChange={setCurrentCardTab}
-            currentUILanguage={uILanguage}
-            tabsTexts={textData.tabsTitles}
-            data-testid="portfolio-cards-tabs"
-          />
-        </Box>
-        <Box sx={boxMainContentStyle}>
-          <PortfolioCardTabPanel
-            currentUILanguage={uILanguage}
-            index={PortfolioCardsTabEnum.Home}
-            isVisible={isCardVisible(PortfolioCardsTabEnum.Home)}
-            data-testid="homecard-tabpanel"
-          >
-            <HomeCardContent
-              currentUILanguage={uILanguage}
-              onCardChange={setCurrentCardTab}
-              textData={textData.homeCard}
-            />
-          </PortfolioCardTabPanel>
-          <PortfolioCardTabPanel
-            currentUILanguage={uILanguage}
-            index={PortfolioCardsTabEnum.About}
-            isVisible={isCardVisible(PortfolioCardsTabEnum.About)}
-            data-testid="aboutcard-tabpanel"
-          >
-            <AboutCardContent
-              currentUILanguage={uILanguage}
-              onCardChange={setCurrentCardTab}
-              configData={configData}
-              textData={textData.aboutCard}
-            />
-          </PortfolioCardTabPanel>
-          <PortfolioCardTabPanel
-            currentUILanguage={uILanguage}
-            index={PortfolioCardsTabEnum.Skills}
-            isVisible={isCardVisible(PortfolioCardsTabEnum.Skills)}
-            data-testid="skillscard-tabpanel"
-          >
-            <SkillsCardContent
-              currentUILanguage={uILanguage}
-              onCardChange={setCurrentCardTab}
-              textData={textData.skillsCard}
-            />
-          </PortfolioCardTabPanel>
-          <PortfolioCardTabPanel
-            currentUILanguage={uILanguage}
-            index={PortfolioCardsTabEnum.Projects}
-            isVisible={isCardVisible(PortfolioCardsTabEnum.Projects)}
-            data-testid="projectscard-tabpanel"
-          >
-            <ProjectsCardContent
-              currentUILanguage={uILanguage}
-              onCardChange={setCurrentCardTab}
-              textData={textData.projectsCard}
-            />
-          </PortfolioCardTabPanel>
-          <PortfolioCardTabPanel
-            currentUILanguage={uILanguage}
-            index={PortfolioCardsTabEnum.Experience}
-            isVisible={isCardVisible(PortfolioCardsTabEnum.Experience)}
-            data-testid="experiencecard-tabpanel"
-          >
-            <ExperienceCardContent
-              currentUILanguage={uILanguage}
-              onCardChange={setCurrentCardTab}
-              textData={textData.experienceCard}
-            />
-          </PortfolioCardTabPanel>
-        </Box>
-        <Box>
-          <Footer
-            currentUILanguage={uILanguage}
-            onUiLanguageChange={setUILanguage}
-            configData={configData}
-            textData={textData.footerTexts}
-            data-testid="footer"
-          />
-        </Box>
-      </ThemeProvider>
-    </Box>
+    <div className="app-container">
+      <div className="overlay"></div>
+      <video id="backgroundVideo" autoPlay muted loop />
+      <div className="content-box">
+        <div className="hello-text">
+          <Typewriter text={helloTexts} speed={30} loop delay={1000} />
+        </div>
+        <p>🚀 Exciting Changes Ahead! 🚀 </p>
+        <p>
+          Thanks for dropping by! I'm Pedro, a software engineer, and this is my
+          portfolio. Currently undergoing a fantastic makeover to provide you
+          with an even better experience. Stay tuned for the big reveal! In the
+          meantime, feel free to explore my previous work. Your patience is
+          truly appreciated!
+        </p>
+        <ContactSection />
+      </div>
+    </div>
   );
 };
 

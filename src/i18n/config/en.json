@@ -1,8 +1,0 @@
-{
-    "contactLinks": {
-        "email": "pedrotersetti3@gmail.com",
-        "linkedin": "https://www.linkedin.com/in/pedro-freidinger",
-        "github": "https://github.com/pedroter7"
-    },
-    "profileAvatarUrl": "%PUBLIC_URL%/profile_picture.png"
-}
