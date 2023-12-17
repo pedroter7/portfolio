@@ -18,7 +18,7 @@ const helloTexts = [
 ];
 
 const App = () => {
-  const backgroundNumber = getRandomNumber(1, 3);
+  const backgroundNumber = getRandomNumber(1, 7);
 
   useEffect(() => {
     const baseUrl = import.meta.env.BASE || '';
