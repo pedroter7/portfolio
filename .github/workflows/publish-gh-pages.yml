@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Compress build files
-        run: tar -cvf build.tar ./build
+        run: tar -cvf build.tar ./dist
       - name: Upload build.tar as artifact
         uses: actions/upload-artifact@v3
         with:
