@@ -21,8 +21,9 @@ const App = () => {
   const backgroundNumber = getRandomNumber(1, 3);
 
   useEffect(() => {
-    const backgroundImage = `/background_${backgroundNumber}.jpg`;
-    const backgroundVideo = `/background_video_${backgroundNumber}.mp4`;
+    const baseUrl = import.meta.env.BASE || '';
+    const backgroundImage = `${baseUrl}background_${backgroundNumber}.jpg`;
+    const backgroundVideo = `${baseUrl}background_video_${backgroundNumber}.mp4`;
 
     const video = document.getElementById(
       "backgroundVideo"
