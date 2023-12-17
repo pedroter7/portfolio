@@ -54,9 +54,7 @@ const App = () => {
         <p>
           Thanks for dropping by! I'm Pedro, a software engineer, and this is my
           portfolio. Currently undergoing a fantastic makeover to provide you
-          with an even better experience. Stay tuned for the big reveal! In the
-          meantime, feel free to explore my previous work. Your patience is
-          truly appreciated!
+          with an even better experience. Stay tuned for the big reveal!
         </p>
         <ContactSection />
       </div>
