@@ -52,8 +52,8 @@ function isTree(g: GraphDefinition): boolean {
 }
 
 function BFS(vertexId: number, graph: GraphDefinition, status: BFSStatus) {
-  if (status[vertexId].finished) return false;
-  if (status[vertexId].visited) return true;
+  if (status[vertexId].finished) return;
+  if (status[vertexId].visited) return;
   status[vertexId].visited = true;
   const neighbors = graph.edges
     .filter((e) => e.fromVertex == vertexId)
